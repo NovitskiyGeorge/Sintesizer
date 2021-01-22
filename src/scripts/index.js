@@ -9,10 +9,7 @@ window.onload = function() {
   let keyboard = document.createElement('div'),
       instrument = document.createElement('div'),
       app = document.querySelector('.app'),
-      tools = document.createElement('div'),
-      musicClef = document.querySelector('#clef'),
-      pickCheckboxes = document.querySelectorAll('.checkboxOctave'),
-      timer = document.querySelectorAll('.timer');
+      tools = document.createElement('div');
 
 
   function createPiano() {
@@ -24,9 +21,7 @@ window.onload = function() {
     app.append(instrument);
   }
 
-
   createPiano();
-
 
   function getKeys() {
     let keysPromise = fetch('http://localhost:3000/keys').then(res => {
@@ -99,6 +94,7 @@ window.onload = function() {
   createMusicStan();
 
   function changeMusicClef(clefName) {
+    let musicClef = document.querySelector('#clef');
     switch(clefName) {
       case 'bass':
         musicClef.className = `stan__clef-${clefName}`;
@@ -110,6 +106,8 @@ window.onload = function() {
   }
 
   function pickNotes() {
+    let pickCheckboxes = document.querySelectorAll('.checkboxOctave');
+
     let notes = [];
     pickCheckboxes.forEach(box => {  
       if(box.checked) {
@@ -165,6 +163,7 @@ window.onload = function() {
   addRandomNote();
 
   function getTimer() {
+    let timer = document.querySelectorAll('.timer');
     let interval;
     timer.forEach(box => {
       if (box.checked) {
