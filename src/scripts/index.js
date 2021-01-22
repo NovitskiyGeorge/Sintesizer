@@ -61,12 +61,12 @@ window.onload = function() {
       <option value=${'treble'}>Скрипичный ключ</option>
       <option value=${'bass'}>Басовый ключ</option>
     </select>
-    <input type="checkbox" class="checkboxOctave" value="octaveOne" checked> 1-я октава
-    <input type="checkbox" class="checkboxOctave" value="octaveTwo" checked> 2-я октава
-    <input type="checkbox" class="checkboxOctave" value="octaveThree"> 3-я октава
-    <input type="checkbox" class="checkboxOctave" value="octaveFour"> 4-я октава
-    <input type="checkbox" class="checkboxOctave" value="octaveSmall"> малая октава
-    <input type="checkbox" class="checkboxOctave" value="octaveBig"> большая октава
+    <input type="checkbox" class="checkbox-octave" value="octaveOne" checked> 1-я октава
+    <input type="checkbox" class="checkbox-octave" value="octaveTwo" checked> 2-я октава
+    <input type="checkbox" class="checkbox-octave" value="octaveThree"> 3-я октава
+    <input type="checkbox" class="checkbox-octave" value="octaveFour"> 4-я октава
+    <input type="checkbox" class="checkbox-octave" value="octaveSmall"> малая октава
+    <input type="checkbox" class="checkbox-octave" value="octaveBig"> большая октава
     <div class="timer">
       <input type="checkbox" class="timer" value="30000" checked> 30 секунд
       <input type="checkbox" class="timer" value="60000"> 60 секунд
@@ -115,7 +115,7 @@ window.onload = function() {
   start();
 
   function pickNotes() {
-    let pickCheckboxes = document.querySelectorAll('.checkboxOctave');
+    let pickCheckboxes = document.querySelectorAll('.checkbox-octave');
 
     let notes = [];
     pickCheckboxes.forEach(box => {  
@@ -240,63 +240,63 @@ window.onload = function() {
     let  currentNote = document.querySelector('.note');
     switch(note) {
       case 'do_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 're_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'mi_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break; 
       case 'fa_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'sol_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;  
       case 'lya_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'si_one':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'do_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 're_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'mi_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break; 
       case 'fa_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'sol_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;  
       case 'lya_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'si_two':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'do_three':
-        currentNote.className = note;
+        currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
     }
