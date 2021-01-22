@@ -23,7 +23,7 @@ body {
   background-size: 100%;
 
   &__clef {
-    &-treble {
+    &_treble {
       width: 100px;
       height: 170px;
       background-image: url('../image/treble.png');
@@ -31,7 +31,7 @@ body {
       background-size: 100%;
     }
 
-    &-bass {
+    &_bass {
       margin-top: 40px;
       width: 170px;
       height: 140px;
@@ -40,138 +40,138 @@ body {
       background-size: 100%;
     }
   }
+}
 
-  &__note {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    min-width: 120px;
-    min-height: 120px;
-    position: absolute;
-    margin-left: 450px;
+.note {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-width: 120px;
+  min-height: 120px;
+  position: absolute;
+  margin-left: 450px;
 
-    &#do-one {
-      background-image: url('../image/noteUp.png');
-      margin-top: 100px;
+  &__do_one {
+    background-image: url('../image/noteUp.png');
+    margin-top: 100px;
 
-      &::before {
-        margin-left: 26px;
-        margin-top: 102px;
-        content: '';
-        width: 50px;
-        height: 4px;
-        background-color: #000;
-        position: absolute;
-      }
+    &::before {
+      margin-left: 26px;
+      margin-top: 102px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
     }
+  }
 
-    &#re-one {
-      background-image: url('../image/noteUp.png');
-      margin-top: 78px;
-    }
+  &__re_one {
+    background-image: url('../image/noteUp.png');
+    margin-top: 78px;
+  }
 
-    &#mi-one {
-      background-image: url('../image/noteUp.png');
-      margin-top: 65px;
-    }
+  &__mi_one {
+    background-image: url('../image/noteUp.png');
+    margin-top: 65px;
+  }
 
-    &#fa-one {
-      background-image: url('../image/noteUp.png');
-      margin-top: 49px;
-    }
+  &__fa_one {
+    background-image: url('../image/noteUp.png');
+    margin-top: 49px;
+  }
 
-    &#sol-one {
-      background-image: url('../image/noteUp.png');
-      margin-top: 33px;
-    }
+  &__sol_one {
+    background-image: url('../image/noteUp.png');
+    margin-top: 33px;
+  }
 
-    &#lya-one {
-      background-image: url('../image/noteUp.png');
-      margin-top: 18px;
-    }
+  &__lya_one {
+    background-image: url('../image/noteUp.png');
+    margin-top: 18px;
+  }
 
-    &#si-one {
-      background-image: url('../image/noteDown.png');
-      margin-top: 90px;
-    }
+  &__si_one {
+    background-image: url('../image/noteDown.png');
+    margin-top: 90px;
+  }
 
-    &#do-two {
-      background-image: url('../image/noteDown.png');
-      margin-top: 75px;
-    }
+  &__do_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: 75px;
+  }
 
-    &#re-two {
-      background-image: url('../image/noteDown.png');
-      margin-top: 60px;
-    }
+  &__re_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: 60px;
+  }
 
-    &#mi-two {
-      background-image: url('../image/noteDown.png');
-      margin-top: 45px;
-    }
+  &__mi_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: 45px;
+  }
 
-    &#fa-two {
-      background-image: url('../image/noteDown.png');
-      margin-top: 30px;
-    }
+  &__fa_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: 30px;
+  }
 
-    &#sol-two {
-      background-image: url('../image/noteDown.png');
+  &__sol_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: 15px;
+  }
+
+  &__lya_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: 0;
+
+    &::before {
+      margin-left: 43px;
       margin-top: 15px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__si_two {
+    background-image: url('../image/noteDown.png');
+    margin-top: -15px;
+
+    &::before {
+      margin-left: 42px;
+      margin-top: 30px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__do_three {
+    background-image: url('../image/noteDown.png');
+    margin-top: -30px;
+
+    &::after {
+      margin-left: 42px;
+      margin-top: 45px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
     }
 
-    &#lya-two {
-      background-image: url('../image/noteDown.png');
-      margin-top: 0;
-
-      &::before {
-        margin-left: 43px;
-        margin-top: 15px;
-        content: '';
-        width: 50px;
-        height: 4px;
-        background-color: #000;
-        position: absolute;
-      }
-    }
-
-    &#si-two {
-      background-image: url('../image/noteDown.png');
-      margin-top: -15px;
-
-      &::before {
-        margin-left: 42px;
-        margin-top: 30px;
-        content: '';
-        width: 50px;
-        height: 4px;
-        background-color: #000;
-        position: absolute;
-      }
-    }
-
-    &#do-three {
-      background-image: url('../image/noteDown.png');
-      margin-top: -30px;
-
-      &::after {
-        margin-left: 42px;
-        margin-top: 45px;
-        content: '';
-        width: 50px;
-        height: 4px;
-        background-color: #000;
-        position: absolute;
-      }
-
-      &::before {
-        margin-left: 42px;
-        margin-top: 15px;
-        content: '';
-        width: 50px;
-        height: 4px;
-        background-color: #000;
-        position: absolute;
-      }
+    &::before {
+      margin-left: 42px;
+      margin-top: 15px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
     }
   }
 }
@@ -195,7 +195,7 @@ body {
     color: #fff;
   }
 
-  &__redLine {
+  &__line {
     height: 5px;
     width: 100%;
     background-color: #ca0000;
@@ -216,12 +216,12 @@ body {
   height: 200px;
   border-radius: 0 0 5px 5px;
 
-  &__white {
+  &_white {
     background-color: rgb(255, 255, 255);
     border: 1px solid #000;
   }
 
-  &__black {
+  &_black {
     position: absolute;
     width: 20px;
     height: 120px;
@@ -248,7 +248,7 @@ body {
     }
   }
 
-  &-push {
+  &_push {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 }

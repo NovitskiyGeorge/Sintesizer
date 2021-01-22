@@ -1,9 +1,5 @@
 import '../styles/index.scss';
 
-if (process.env.NODE_ENV === 'development') {
-  require('../index.html');
-}
-
 window.onload = function() {
 
   let keyboard = document.createElement('div'),
@@ -16,7 +12,7 @@ window.onload = function() {
     instrument.className = 'piano';
     instrument.innerHTML = `
     <div class="piano__panel"></div>
-    <div class="piano__redLine"></div>
+    <div class="piano__line"></div>
     `;
     app.append(instrument);
   }
@@ -44,10 +40,10 @@ window.onload = function() {
       let cls = 'key';
       switch(key.color) {
         case 'white': 
-          cls+= ' key__white';
+          cls+= ' key_white';
           break;
         case 'black': 
-          cls+= ' key__black';
+          cls+= ' key_black';
       }
       return `<div class="${cls}" data-id=${key.id} data-url=${key.url} data-name=${key.name}></div>`;
     });
@@ -86,8 +82,8 @@ window.onload = function() {
     let musicStan = document.createElement('div');
     musicStan.className = 'stan';
     musicStan.innerHTML = `
-    <div class="stan__clef-treble" id="clef"></div>
-    <div class="stan__note"></div>`;
+    <div class="stan__clef_treble" id="clef"></div>
+    <div class="note"></div>`;
     app.prepend(musicStan);
   }
 
@@ -97,13 +93,26 @@ window.onload = function() {
     let musicClef = document.querySelector('#clef');
     switch(clefName) {
       case 'bass':
-        musicClef.className = `stan__clef-${clefName}`;
+        musicClef.className = `stan__clef_${clefName}`;
         break;
       case 'treble':
-        musicClef.className = `stan__clef-${clefName}`;
+        musicClef.className = `stan__clef_${clefName}`;
         break;
     }
   }
+
+  function start() {
+    let startBtn = document.querySelector('.start');
+    startBtn.addEventListener('click', () => {
+    startBtn.dataset.status = 'enabled';
+    addRandomNote();
+    let interval = getTimer();
+    console.log(interval);
+    setTimeout(changeStatusBtnStart, interval, startBtn);
+  });
+  }
+
+  start();
 
   function pickNotes() {
     let pickCheckboxes = document.querySelectorAll('.checkboxOctave');
@@ -113,15 +122,15 @@ window.onload = function() {
       if(box.checked) {
         switch (box.value) {
           case 'octaveOne': {
-            notes.push('do-one', 're-one', 'mi-one', 'fa-one', 'sol-one', 'lya-one', 'si-one');
+            notes.push('do_one', 're_one', 'mi_one', 'fa_one', 'sol_one', 'lya_one', 'si_one');
             break;
           }
           case 'octaveTwo': {
-            notes.push('do-two', 're-two', 'mi-two', 'fa-two', 'sol-two', 'lya-two', 'si-two');
+            notes.push('do_two', 're_two', 'mi_two', 'fa_two', 'sol_two', 'lya_two', 'si_two');
             break;
           }
           case 'octaveThree': {
-            notes.push('do-three');
+            notes.push('do_three');
             break;
           }
         }        
@@ -173,18 +182,7 @@ window.onload = function() {
     return interval;
   }
 
-  function start() {
-      let startBtn = document.querySelector('.start');
-      startBtn.addEventListener('click', () => {
-      startBtn.dataset.status = 'enabled';
-      addRandomNote();
-      let interval = getTimer();
-      console.log(interval);
-      setTimeout(changeStatusBtnStart, interval, startBtn);
-    });
-  }
 
-  start();
 
   function changeStatusBtnStart() {
     let startBtn = document.querySelector('.start');
@@ -201,9 +199,9 @@ window.onload = function() {
   
   function checkWin(keyNote) {
     let inf;
-    let  currentNote = document.querySelector('.stan__note');
+    let  currentNote = document.querySelector('.note');
     let infPanel = document.querySelector('.piano__panel');
-    if (currentNote.id.includes(keyNote)) {
+    if (currentNote.className.includes(keyNote)) {
       infPanel.innerText = `Молодец!`;
     } else {
         inf = currentNote.dataset.name;
@@ -212,16 +210,16 @@ window.onload = function() {
   }
 
   function pushKeys() {
-    let  currentNote = document.querySelector('.stan__note');
+    let  currentNote = document.querySelector('.note');
     let startBtn = document.querySelector('.start');
     document.addEventListener('click', (e) => {
-      if(e.target.className === 'key key__white' || e.target.className === 'key key__black') {
+      if(e.target.className === 'key key_white' || e.target.className === 'key key_black') {
         let key = e.target;
         let keyUrl = e.target.dataset.url;
         let keyName = e.target.dataset.name;
         checkWin(keyName);
         soundClick(keyUrl);
-        key.classList.add('key-push');
+        key.classList.add('key_push');
         setTimeout(removeClassPush, 50, key);
         if (keyName === currentNote.dataset.name) {
           addRandomNote();
@@ -235,71 +233,71 @@ window.onload = function() {
   pushKeys();
 
   function removeClassPush(key) {
-    key.classList.remove('key-push');
+    key.classList.remove('key_push');
   }    
 
   function changeNote(note) {
-    let  currentNote = document.querySelector('.stan__note');
+    let  currentNote = document.querySelector('.note');
     switch(note) {
-      case 'do-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'do_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 're-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 're_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'mi-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'mi_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break; 
-      case 'fa-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'fa_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'sol-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'sol_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;  
-      case 'lya-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'lya_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'si-one':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'si_one':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'do-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'do_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 're-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 're_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'mi-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'mi_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break; 
-      case 'fa-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'fa_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'sol-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'sol_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;  
-      case 'lya-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'lya_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'si-two':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'si_two':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'do-three':
-        currentNote.id = note;
-        currentNote.dataset.name = note.split('-')[0];
+      case 'do_three':
+        currentNote.className = note;
+        currentNote.dataset.name = note.split('_')[0];
         break;
     }
   }
