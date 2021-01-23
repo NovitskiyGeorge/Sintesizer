@@ -116,10 +116,10 @@ window.onload = function() {
 
   function pickNotes() {
     let pickCheckboxes = document.querySelectorAll('.checkbox-octave');
-
+    let select = document.querySelector('select');
     let notes = [];
     pickCheckboxes.forEach(box => {  
-      if(box.checked) {
+      if(box.checked && select.value === 'treble') {
         switch (box.value) {
           case 'octaveOne': {
             notes.push('do_one', 're_one', 'mi_one', 'fa_one', 'sol_one', 'lya_one', 'si_one');
@@ -135,6 +135,10 @@ window.onload = function() {
           }
         }        
       }
+      if(box.checked) {
+        switch (box.value) {
+        }        
+      }
     });
     return notes;
   }
@@ -144,12 +148,9 @@ window.onload = function() {
   }  
 
   function getRandomNote() {
-    let select = document.querySelector('select');
-    if(select.value === 'treble'){
       let notes = pickNotes();
       let key = getRandomInt(0, notes.length-1);
-      return notes[key];
-    }
+      return notes[key];    
   }
 
   function selectClef() {
