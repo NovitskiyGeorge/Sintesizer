@@ -71,7 +71,7 @@ window.onload = function() {
       <input type="checkbox" class="timer" value="30000" checked> 30 секунд
       <input type="checkbox" class="timer" value="60000"> 60 секунд
     </div>
-    <button class="start">Start</button>
+    <button class="start" data-status="disabled">Start</button>
     `;
     app.prepend(tools);
   }
@@ -109,10 +109,31 @@ window.onload = function() {
     let interval = getTimer();
     console.log(interval);
     setTimeout(changeStatusBtnStart, interval, startBtn);
+    startTimer(interval/1000);
   });
   }
 
   start();
+
+  function startTimer(interval) {
+    let timer = setTimeout(function tick() {
+      interval--;
+      console.log(interval);
+      if ( !interval ) {
+        showTimer('');
+      } else {
+        showTimer(interval);
+        timer = setTimeout(tick, 1000);
+      }
+    }, 1000);
+    
+    
+  }
+
+  function showTimer(timer) {
+    let infPanel = document.querySelector('.piano__panel');
+    infPanel.innerText = timer;
+  }
 
   function pickNotes() {
     let pickCheckboxes = document.querySelectorAll('.checkbox-octave');
@@ -188,6 +209,7 @@ window.onload = function() {
   function changeStatusBtnStart() {
     let startBtn = document.querySelector('.start');
     startBtn.dataset.status = 'disabled';
+
     console.log(startBtn.dataset.status);
   }
 
@@ -201,13 +223,20 @@ window.onload = function() {
   function checkWin(keyNote) {
     let inf;
     let  currentNote = document.querySelector('.note');
-    let infPanel = document.querySelector('.piano__panel');
     if (currentNote.className.includes(keyNote)) {
-      infPanel.innerText = `Молодец!`;
+      showInfo('Молодец!');
     } else {
         inf = currentNote.dataset.name;
-        infPanel.innerText = `Не верно! Верная нота: ${inf}`;
+      showInfo(`Не верно! Верная нота: ${inf}`);
       }
+  }
+
+  function showInfo(info) {
+    let infPanel = document.querySelector('.piano__panel');
+    let statusStart = document.querySelector('.start').dataset.status;
+    if ( statusStart === 'disabled' ) {
+      infPanel.innerText = info;  
+    }    
   }
 
   function pushKeys() {
