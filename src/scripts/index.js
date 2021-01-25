@@ -11,6 +11,10 @@ window.onload = function() {
   function createPiano() {
     instrument.className = 'piano';
     instrument.innerHTML = `
+    <div class="configuration">
+    <button class="configuration__btn btn-start">Start</button> 
+    <button class="configuration__btn btn-tools">Opitions</button>
+    </div>
     <div class="piano__panel"></div>
     <div class="piano__line"></div>
     `;
@@ -156,8 +160,12 @@ window.onload = function() {
           }
         }        
       }
-      if(box.checked) {
+      if(box.checked && select.value == 'bass') {
         switch (box.value) {
+          case 'ocatveBig': {
+            notes.push('do_big', 're_big', 'mi_big', 'fa_big', 'sol_big', 'lya_big', 'si_big');
+            break;
+          }
         }        
       }
     });
@@ -326,6 +334,10 @@ window.onload = function() {
         currentNote.dataset.name = note.split('_')[0];
         break;
       case 'do_three':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'do_big':
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
