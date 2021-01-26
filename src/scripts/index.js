@@ -2,13 +2,10 @@ import '../styles/index.scss';
 
 window.onload = function() {
 
-  let keyboard = document.createElement('div'),
-      instrument = document.createElement('div'),
-      app = document.querySelector('.app'),
-      tools = document.createElement('div');
-
+  let app = document.querySelector('.app');
 
   function createPiano() {
+    let  instrument = document.createElement('div');
     instrument.className = 'piano';
     instrument.innerHTML = `
     <div class="configuration">
@@ -38,6 +35,7 @@ window.onload = function() {
   }
 
   function createKeyboard(keys) {
+    let keyboard = document.createElement('div');
     let piano = document.querySelector('.piano');
     keyboard.className = 'keyboard';
     let html = keys.map(key => {
@@ -59,25 +57,27 @@ window.onload = function() {
   getKeys();
 
   function createSelect() {
+    let tools = document.createElement('div');    
+    let piano = document.querySelector('.piano');
     tools.className = 'tools';
     tools.innerHTML = `  
-    <select data-name='clef'>
+    <select class="tools__select" data-name='clef'>
       <option value=${'treble'}>Скрипичный ключ</option>
       <option value=${'bass'}>Басовый ключ</option>
     </select>
-    <input type="checkbox" class="checkbox-octave" value="octaveOne" checked> 1-я октава
-    <input type="checkbox" class="checkbox-octave" value="octaveTwo" checked> 2-я октава
-    <input type="checkbox" class="checkbox-octave" value="octaveThree"> 3-я октава
-    <input type="checkbox" class="checkbox-octave" value="octaveFour"> 4-я октава
-    <input type="checkbox" class="checkbox-octave" value="octaveSmall"> малая октава
-    <input type="checkbox" class="checkbox-octave" value="octaveBig"> большая октава
-    <div class="timer">
+    <div><input type="checkbox" class="checkbox-octave" value="octaveOne" checked> 1-я октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveTwo" checked> 2-я октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveThree"> 3-я октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveFour"> 4-я октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveSmall"> малая октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveBig"> большая октава</div>
+    <div class="tools__timer"> Время
       <input type="checkbox" class="timer" value="30000" checked> 30 секунд
       <input type="checkbox" class="timer" value="60000"> 60 секунд
     </div>
-    <button class="start" data-status="disabled">Start</button>
+    <button class="tools__btn-start" data-status="disabled">Start</button>
     `;
-    app.prepend(tools);
+    piano.appendChild(tools);
   }
 
   createSelect();
@@ -93,6 +93,20 @@ window.onload = function() {
 
   createMusicStan();
 
+  function showTools() {
+    let btnTools = document.querySelector('.btn-tools');
+    btnTools.addEventListener('click', () => {
+      switchShowTools();
+    });
+  }
+
+  showTools();
+
+  function switchShowTools() {
+      let tools = document.querySelector('.tools');
+      tools.classList.toggle('tools_hidden');
+  }
+
   function changeMusicClef(clefName) {
     let musicClef = document.querySelector('#clef');
     switch(clefName) {
@@ -106,15 +120,17 @@ window.onload = function() {
   }
 
   function start() {
-    let startBtn = document.querySelector('.start');
+    let startBtn = document.querySelector('.tools__btn-start');
     startBtn.addEventListener('click', () => {
-    startBtn.dataset.status = 'enabled';
-    addRandomNote();
-    let interval = getTimer();
-    console.log(interval);
-    setTimeout(changeStatusBtnStart, interval, startBtn);
-    startTimer(interval/1000);
-  });
+      if ( startBtn.dataset.status === 'disabled') {
+        startBtn.dataset.status = 'enabled';
+        switchShowTools();
+        addRandomNote();    
+        let interval = getTimer();
+        setTimeout(changeStatusBtnStart, interval, startBtn);
+        startTimer(interval/1000);
+      }
+    });
   }
 
   start();
@@ -215,7 +231,7 @@ window.onload = function() {
 
 
   function changeStatusBtnStart() {
-    let startBtn = document.querySelector('.start');
+    let startBtn = document.querySelector('.tools__btn-start');
     startBtn.dataset.status = 'disabled';
 
     console.log(startBtn.dataset.status);
@@ -241,7 +257,7 @@ window.onload = function() {
 
   function showInfo(info) {
     let infPanel = document.querySelector('.piano__panel');
-    let statusStart = document.querySelector('.start').dataset.status;
+    let statusStart = document.querySelector('.tools__btn-start').dataset.status;
     if ( statusStart === 'disabled' ) {
       infPanel.innerText = info;  
     }    
@@ -249,7 +265,7 @@ window.onload = function() {
 
   function pushKeys() {
     let  currentNote = document.querySelector('.note');
-    let startBtn = document.querySelector('.start');
+    let startBtn = document.querySelector('.tools__btn-start');
     document.addEventListener('click', (e) => {
       if(e.target.className === 'key key_white' || e.target.className === 'key key_black') {
         let key = e.target;
