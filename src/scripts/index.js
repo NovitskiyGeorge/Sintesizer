@@ -171,14 +171,14 @@ window.onload = function() {
             break;
           }
           case 'octaveThree': {
-            notes.push('do_three');
+            notes.push('do_three', 're_three', 'mi_three');
             break;
           }
         }        
       }
       if(box.checked && select.value == 'bass') {
         switch (box.value) {
-          case 'ocatveBig': {
+          case 'octaveBig': {
             notes.push('do_big', 're_big', 'mi_big', 'fa_big', 'sol_big', 'lya_big', 'si_big');
             break;
           }
@@ -353,7 +353,39 @@ window.onload = function() {
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
+      case 're_three':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'mi_three':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
       case 'do_big':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 're_big':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'mi_big':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'fa_big':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'sol_big':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'lya_big':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'lya_big':
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;

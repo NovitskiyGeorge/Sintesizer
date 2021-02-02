@@ -272,7 +272,7 @@
       margin-top: 45px;
       content: '';
       width: 50px;
-      height: 4px;
+      height: 3px;
       background-color: #000;
       position: absolute;
     }
@@ -282,7 +282,57 @@
       margin-top: 15px;
       content: '';
       width: 50px;
-      height: 4px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__re_three {
+    background-image: url('../image/noteDown.png');
+    margin-top: -45px;
+
+    &::after {
+      margin-left: 42px;
+      margin-top: 60px;
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+
+    &::before {
+      margin-left: 42px;
+      margin-top: 30px;
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__mi_three {
+    background-image: url('../image/new.png');
+    margin-top: -60px;
+
+    &::after {
+      margin-left: 42px;
+      margin-top: 75px;
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+
+    &::before {
+      margin-left: 42px;
+      margin-top: 45px;
+      content: '';
+      width: 50px;
+      height: 3px;
       background-color: #000;
       position: absolute;
     }
