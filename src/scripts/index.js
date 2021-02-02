@@ -174,6 +174,10 @@ window.onload = function() {
             notes.push('do_three', 're_three', 'mi_three');
             break;
           }
+          case 'octaveSmall': {
+            notes.push('do_small', 're_small', 'mi_small', 'fa_small');
+            break;
+          }
         }        
       }
       if(box.checked && select.value == 'bass') {
@@ -247,7 +251,7 @@ window.onload = function() {
   function checkWin(keyNote) {
     let inf;
     let  currentNote = document.querySelector('.note');
-    if (currentNote.className.includes(keyNote)) {
+    if (currentNote.dataset.name.includes(keyNote)) {
       showInfo('Молодец!');
     } else {
         inf = currentNote.dataset.name;
@@ -361,6 +365,22 @@ window.onload = function() {
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
+      case 'do_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 're_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'mi_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'fa_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
       case 'do_big':
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
@@ -385,7 +405,7 @@ window.onload = function() {
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'lya_big':
+      case 'si_big':
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;

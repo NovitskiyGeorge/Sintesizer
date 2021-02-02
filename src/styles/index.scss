@@ -314,7 +314,7 @@
   }
 
   &__mi_three {
-    background-image: url('../image/new.png');
+    background-image: url('../image/noteDownStreak.png');
     margin-top: -60px;
 
     &::after {
@@ -332,6 +332,86 @@
       margin-top: 45px;
       content: '';
       width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__do_small {
+    background-image: url('../image/noteUpStreak.png');
+    margin-top: 150px;
+
+    &::after {
+      margin-left: 21px;
+      margin-top: 45px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+
+    &::before {
+      margin-left: 21px;
+      margin-top: 75px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__re_small {
+    background-image: url('../image/noteUp.png');
+    margin-top: 135px;
+
+    &::after {
+      margin-left: 21px;
+      margin-top: 60px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+
+    &::before {
+      margin-left: 21px;
+      margin-top: 90px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__mi_small {
+    background-image: url('../image/noteUpStreak.png');
+    margin-top: 120px;
+
+    &::after {
+      margin-left: 21px;
+      margin-top: 75px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__fa_small {
+    background-image: url('../image/noteUp.png');
+    margin-top: 105px;
+
+    &::after {
+      margin-left: 21px;
+      margin-top: 90px;
+      content: '';
+      width: 57px;
       height: 3px;
       background-color: #000;
       position: absolute;
