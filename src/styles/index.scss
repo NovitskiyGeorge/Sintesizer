@@ -338,7 +338,7 @@
     }
   }
 
-  &__do_small {
+  &__fa_small {
     background-image: url('../image/noteUpStreak.png');
     margin-top: 150px;
 
@@ -363,7 +363,7 @@
     }
   }
 
-  &__re_small {
+  &__sol_small {
     background-image: url('../image/noteUp.png');
     margin-top: 135px;
 
@@ -388,7 +388,7 @@
     }
   }
 
-  &__mi_small {
+  &__lya_small {
     background-image: url('../image/noteUpStreak.png');
     margin-top: 120px;
 
@@ -403,7 +403,7 @@
     }
   }
 
-  &__fa_small {
+  &__si_small {
     background-image: url('../image/noteUp.png');
     margin-top: 105px;
 
@@ -419,6 +419,136 @@
   }
 
   &__do_big {
+    background-image: url('../image/noteUpStreak.png');
+    margin-top: 120px;
+
+    &::after {
+      margin-left: 21px;
+      margin-top: 75px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__re_big {
+    background-image: url('../image/noteUp.png');
+    margin-top: 105px;
+
+    &::after {
+      margin-left: 21px;
+      margin-top: 90px;
+      content: '';
+      width: 57px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__mi_big {
+    background-image: url('../image/noteUp.png');
+    margin-top: 100px;
+
+    &::before {
+      margin-left: 26px;
+      margin-top: 102px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__fa_big {
+    background-image: url('../image/noteUp.png');
+    margin-top: 78px;
+  }
+
+  &__sol_big {
+    background-image: url('../image/noteUp.png');
+    margin-top: 65px;
+  }
+
+  &__lya_big {
+    background-image: url('../image/noteUp.png');
+    margin-top: 49px;
+  }
+
+  &__si_big {
+    background-image: url('../image/noteUp.png');
+    margin-top: 33px;
+  }
+
+  &__do-bass_small {
+    background-image: url('../image/noteUp.png');
+    margin-top: 18px;
+  }
+
+  &__re-bass_small {
+    background-image: url('../image/noteDown.png');
+    margin-top: 90px;
+  }
+
+  &__mi-bass_small {
+    background-image: url('../image/noteDown.png');
+    margin-top: 75px;
+  }
+
+  &__fa-bass_small {
+    background-image: url('../image/noteDown.png');
+    margin-top: 60px;
+  }
+
+  &__sol-bass_small {
+    background-image: url('../image/noteDown.png');
+    margin-top: 45px;
+  }
+
+  &__lya-bass_small {
+    background-image: url('../image/noteDown.png');
+    margin-top: 30px;
+  }
+
+  &__si-bass_small {
+    background-image: url('../image/noteDown.png');
+    margin-top: 15px;
+  }
+
+  &__do-bass_one {
+    background-image: url('../image/noteDown.png');
+    margin-top: 0;
+
+    &::before {
+      margin-left: 43px;
+      margin-top: 15px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__re-bass_one {
+    background-image: url('../image/noteDown.png');
+    margin-top: -15px;
+
+    &::before {
+      margin-left: 42px;
+      margin-top: 30px;
+      content: '';
+      width: 50px;
+      height: 4px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__mi-bass_one {
     background-image: url('../image/noteDown.png');
     margin-top: -30px;
 
@@ -427,7 +557,7 @@
       margin-top: 45px;
       content: '';
       width: 50px;
-      height: 4px;
+      height: 3px;
       background-color: #000;
       position: absolute;
     }
@@ -437,7 +567,57 @@
       margin-top: 15px;
       content: '';
       width: 50px;
-      height: 4px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__fa-bass_one {
+    background-image: url('../image/noteDown.png');
+    margin-top: -45px;
+
+    &::after {
+      margin-left: 42px;
+      margin-top: 60px;
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+
+    &::before {
+      margin-left: 42px;
+      margin-top: 30px;
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+  }
+
+  &__sol-bass_one {
+    background-image: url('../image/noteDownStreak.png');
+    margin-top: -60px;
+
+    &::after {
+      margin-left: 42px;
+      margin-top: 75px;
+      content: '';
+      width: 50px;
+      height: 3px;
+      background-color: #000;
+      position: absolute;
+    }
+
+    &::before {
+      margin-left: 42px;
+      margin-top: 45px;
+      content: '';
+      width: 50px;
+      height: 3px;
       background-color: #000;
       position: absolute;
     }

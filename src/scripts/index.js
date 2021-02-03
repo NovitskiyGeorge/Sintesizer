@@ -117,6 +117,45 @@ window.onload = function() {
         musicClef.className = `stan__clef_${clefName}`;
         break;
     }
+    deselectCheckbox(clefName);
+    selectCheckbox(clefName);
+  }
+
+  function deselectCheckbox(clef) {
+    let checkboxes = document.querySelectorAll('.checkbox-octave');
+    switch(clef) {
+      case 'bass':
+      checkboxes.forEach(item => {
+        item.checked = false;
+      });
+      break;
+      case 'treble':
+      checkboxes.forEach(item => {
+        item.checked = false;
+      });
+      break;
+    }
+  }
+
+  function selectCheckbox(clef) {
+    let checkboxes = document.querySelectorAll('.checkbox-octave');
+    switch(clef) {
+      case 'bass':
+      checkboxes.forEach(item => {
+        if(item.value === 'octaveBig' || item.value === 'octaveSmall' || item.value === 'octaveOne') {
+          item.checked = true;
+        }
+      });
+      break;
+      case 'treble':
+      checkboxes.forEach(item => {
+        if(item.value === 'octaveOne' || item.value === 'octaveTwo' || item.value === 'octaveThree' || 
+        item.value === 'octaveSmall') {
+           item.checked = true;
+        }
+      });
+      break;
+    }
   }
 
   function start() {
@@ -138,7 +177,6 @@ window.onload = function() {
   function startTimer(interval) {
     let timer = setTimeout(function tick() {
       interval--;
-      console.log(interval);
       if ( !interval ) {
         showTimer('');
       } else {
@@ -175,7 +213,7 @@ window.onload = function() {
             break;
           }
           case 'octaveSmall': {
-            notes.push('do_small', 're_small', 'mi_small', 'fa_small');
+            notes.push('fa_small', 'sol_small', 'lya_small', 'si_small');
             break;
           }
         }        
@@ -184,6 +222,16 @@ window.onload = function() {
         switch (box.value) {
           case 'octaveBig': {
             notes.push('do_big', 're_big', 'mi_big', 'fa_big', 'sol_big', 'lya_big', 'si_big');
+            break;
+          }
+          case 'octaveSmall': {
+            notes.push('do-bass_small', 're-bass_small', 
+            'mi-bass_small', 'fa-bass_small', 'sol-bass_small', 'lya-bass_small','si-bass_small');
+            break;
+          }
+          case 'octaveOne': {
+            notes.push('do-bass_one', 're-bass_one', 
+            'mi-bass_one', 'fa-bass_one', 'sol-bass_one');
             break;
           }
         }        
@@ -237,8 +285,6 @@ window.onload = function() {
   function changeStatusBtnStart() {
     let startBtn = document.querySelector('.tools__btn-start');
     startBtn.dataset.status = 'disabled';
-
-    console.log(startBtn.dataset.status);
   }
 
   function soundClick(keyUrl) {
@@ -365,19 +411,19 @@ window.onload = function() {
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
-      case 'do_small':
-        currentNote.className = `note note__${note}`;
-        currentNote.dataset.name = note.split('_')[0];
-        break;
-      case 're_small':
-        currentNote.className = `note note__${note}`;
-        currentNote.dataset.name = note.split('_')[0];
-        break;
-      case 'mi_small':
-        currentNote.className = `note note__${note}`;
-        currentNote.dataset.name = note.split('_')[0];
-        break;
       case 'fa_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'sol_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'lya_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'si_small':
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
         break;
@@ -408,6 +454,54 @@ window.onload = function() {
       case 'si_big':
         currentNote.className = `note note__${note}`;
         currentNote.dataset.name = note.split('_')[0];
+        break;
+      case 'do-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 're-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'mi-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'fa-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'sol-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'lya-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'si-bass_small':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'do-bass_one':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 're-bass_one':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'mi-bass_one':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'fa-bass_one':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
+        break;
+      case 'sol-bass_one':
+        currentNote.className = `note note__${note}`;
+        currentNote.dataset.name = note.split('-')[0];
         break;
     }
   }
