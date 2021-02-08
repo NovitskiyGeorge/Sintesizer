@@ -8,12 +8,15 @@ window.onload = function() {
     let  instrument = document.createElement('div');
     instrument.className = 'piano';
     instrument.innerHTML = `
-    <div class="configuration">
-    <button class="configuration__btn btn-start">Start</button> 
-    <button class="configuration__btn btn-tools">Opitions</button>
-    </div>
+
     <div class="piano__panel"></div>
     <div class="piano__line"></div>
+    <div class="panel-control">
+      <div class="configuration">
+        <button class="configuration__btn btn-start"><div class="btn-start__indicator"></div>Start</button> 
+        <button class="configuration__btn btn-tools">Opitions</button>
+      </div>      
+    </div>
     `;
     app.append(instrument);
   }
@@ -36,7 +39,7 @@ window.onload = function() {
 
   function createKeyboard(keys) {
     let keyboard = document.createElement('div');
-    let piano = document.querySelector('.piano');
+    let piano = document.querySelector('.panel-control');
     keyboard.className = 'keyboard';
     let html = keys.map(key => {
       let cls = 'key';
