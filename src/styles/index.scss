@@ -64,10 +64,17 @@
 
   &__indicator {
     margin-right: 5px;
-    width: 6px;
+    width: 5px;
     height: 12px;
-    background-color: rgba(255, 0, 0, 1);
-    box-shadow: 0 0 9px 1px rgba(255, 0, 0, 1);
+    background-color: rgb(179, 187, 183);
+
+    &_active {
+      margin-right: 5px;
+      width: 5px;
+      height: 12px;
+      background-color: rgba(255, 0, 0, 1);
+      box-shadow: 0 0 9px 1px rgba(255, 0, 0, 1);
+    }
   }
 }
 
@@ -82,7 +89,7 @@
     text-align: center;
     height: 60px;
     width: 100%;
-    background-color: #000;
+    background-image: url('../image/panelBack1.png');
     box-sizing: border-box;
     color: #fff;
   }

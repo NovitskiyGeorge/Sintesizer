@@ -13,8 +13,8 @@ window.onload = function() {
     <div class="piano__line"></div>
     <div class="panel-control">
       <div class="configuration">
-        <button class="configuration__btn btn-start"><div class="btn-start__indicator"></div>Start</button> 
-        <button class="configuration__btn btn-tools">Opitions</button>
+        <button class="configuration__btn btn-start" data-status="disabled"><div class="btn-start__indicator"></div>Start</button> 
+        <button class="configuration__btn btn-tools">Options</button>
       </div>      
     </div>
     `;
@@ -161,13 +161,14 @@ window.onload = function() {
     }
   }
 
-  function start() {
+  function applySet() {
     let startBtn = document.querySelector('.tools__btn-start');
     startBtn.addEventListener('click', () => {
       if ( startBtn.dataset.status === 'disabled') {
         startBtn.dataset.status = 'enabled';
         switchShowTools();
-        addRandomNote();    
+        addRandomNote();
+        indicatorOn();  
         let interval = getTimer();
         setTimeout(changeStatusBtnStart, interval, startBtn);
         startTimer(interval/1000);
@@ -175,7 +176,34 @@ window.onload = function() {
     });
   }
 
-  start();
+  applySet();
+
+  function startTest() {
+    let startBtnMain = document.querySelector('.btn-start');
+    startBtnMain.addEventListener('click', () => {
+      if ( startBtnMain.dataset.status === 'disabled') {
+        startBtnMain.dataset.status = 'enabled';
+        addRandomNote();
+        indicatorOn();  
+        let interval = getTimer();
+        setTimeout(changeStatusBtnStartTest, interval, startBtnMain);
+        startTimer(interval/1000);
+      }
+    });
+  }
+
+  startTest();
+
+  function indicatorOn() {
+    let indicat = document.querySelector('.btn-start__indicator');
+    indicat.classList.add('btn-start__indicator_active');
+  }
+  
+  function indicatorOff() {
+    let indicat = document.querySelector('.btn-start__indicator');
+    indicat.classList.remove('btn-start__indicator_active');
+  }
+
 
   function startTimer(interval) {
     let timer = setTimeout(function tick() {
@@ -283,10 +311,15 @@ window.onload = function() {
     return interval;
   }
 
-
-
   function changeStatusBtnStart() {
     let startBtn = document.querySelector('.tools__btn-start');
+    indicatorOff();
+    startBtn.dataset.status = 'disabled';
+  }
+
+  function changeStatusBtnStartTest() {
+    let startBtn = document.querySelector('.btn-start');
+    indicatorOff();
     startBtn.dataset.status = 'disabled';
   }
 
@@ -319,6 +352,8 @@ window.onload = function() {
   function pushKeys() {
     let  currentNote = document.querySelector('.note');
     let startBtn = document.querySelector('.tools__btn-start');
+    let startBtnMain = document.querySelector('.btn-start');
+
     document.addEventListener('click', (e) => {
       if(e.target.className === 'key key_white' || e.target.className === 'key key_black') {
         let key = e.target;
@@ -330,7 +365,7 @@ window.onload = function() {
         setTimeout(removeClassPush, 50, key);
         if (keyName === currentNote.dataset.name) {
           addRandomNote();
-        } else if (startBtn.dataset.status === 'enabled') {
+        } else if (startBtn.dataset.status === 'enabled' || startBtnMain.dataset.status === 'enabled') {
           addRandomNote();
         }
       }
