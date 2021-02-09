@@ -10,6 +10,7 @@ window.onload = function() {
     instrument.innerHTML = `
 
     <div class="piano__panel"></div>
+    <div class="piano__cover"></div>
     <div class="piano__line"></div>
     <div class="panel-control">
       <div class="configuration">
@@ -78,7 +79,7 @@ window.onload = function() {
       <input type="checkbox" class="timer" value="30000" checked> 30 секунд
       <input type="checkbox" class="timer" value="60000"> 60 секунд
     </div>
-    <button class="tools__btn-start" data-status="disabled">Start</button>
+    <button class="tools__btn-apply">Применить</button>
     `;
     piano.appendChild(tools);
   }
@@ -99,15 +100,22 @@ window.onload = function() {
   function showTools() {
     let btnTools = document.querySelector('.btn-tools');
     btnTools.addEventListener('click', () => {
-      switchShowTools();
+      movePanel();
+      setTimeout(switchShowTools, 1000);
     });
   }
 
   showTools();
 
+  function movePanel() {
+    let panel = document.querySelector('.piano__cover');
+    panel.classList.toggle('piano__cover_active');
+  }
+
   function switchShowTools() {
       let tools = document.querySelector('.tools');
-      tools.classList.toggle('tools_hidden');
+      tools.classList.toggle('tools_show');
+      applySet();
   }
 
   function changeMusicClef(clefName) {
@@ -162,21 +170,14 @@ window.onload = function() {
   }
 
   function applySet() {
-    let startBtn = document.querySelector('.tools__btn-start');
-    startBtn.addEventListener('click', () => {
-      if ( startBtn.dataset.status === 'disabled') {
-        startBtn.dataset.status = 'enabled';
+    let applyBtn = document.querySelector('.tools__btn-apply');
+    applyBtn.addEventListener('click', () => {
         switchShowTools();
-        addRandomNote();
-        indicatorOn();  
-        let interval = getTimer();
-        setTimeout(changeStatusBtnStart, interval, startBtn);
-        startTimer(interval/1000);
-      }
+        movePanel();
     });
   }
 
-  applySet();
+  
 
   function startTest() {
     let startBtnMain = document.querySelector('.btn-start');
@@ -186,7 +187,7 @@ window.onload = function() {
         addRandomNote();
         indicatorOn();  
         let interval = getTimer();
-        setTimeout(changeStatusBtnStartTest, interval, startBtnMain);
+        setTimeout(changeStatusBtnStart, interval, startBtnMain);
         startTimer(interval/1000);
       }
     });
@@ -312,12 +313,6 @@ window.onload = function() {
   }
 
   function changeStatusBtnStart() {
-    let startBtn = document.querySelector('.tools__btn-start');
-    indicatorOff();
-    startBtn.dataset.status = 'disabled';
-  }
-
-  function changeStatusBtnStartTest() {
     let startBtn = document.querySelector('.btn-start');
     indicatorOff();
     startBtn.dataset.status = 'disabled';
@@ -343,7 +338,7 @@ window.onload = function() {
 
   function showInfo(info) {
     let infPanel = document.querySelector('.piano__panel');
-    let statusStart = document.querySelector('.tools__btn-start').dataset.status;
+    let statusStart = document.querySelector('.btn-start').dataset.status;
     if ( statusStart === 'disabled' ) {
       infPanel.innerText = info;  
     }    
@@ -351,8 +346,7 @@ window.onload = function() {
 
   function pushKeys() {
     let  currentNote = document.querySelector('.note');
-    let startBtn = document.querySelector('.tools__btn-start');
-    let startBtnMain = document.querySelector('.btn-start');
+    let startBtn = document.querySelector('.btn-start');
 
     document.addEventListener('click', (e) => {
       if(e.target.className === 'key key_white' || e.target.className === 'key key_black') {
@@ -365,7 +359,7 @@ window.onload = function() {
         setTimeout(removeClassPush, 50, key);
         if (keyName === currentNote.dataset.name) {
           addRandomNote();
-        } else if (startBtn.dataset.status === 'enabled' || startBtnMain.dataset.status === 'enabled') {
+        } else if (startBtn.dataset.status === 'enabled') {
           addRandomNote();
         }
       }

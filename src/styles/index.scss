@@ -80,18 +80,39 @@
 
 .piano {
   min-width: 300px;
-  min-height: 200px;
+  min-height: 266px;
   border: 2px solid #000;
   position: relative;
 
   &__panel {
+    position: relative;
     padding-top: 20px;
     text-align: center;
     height: 60px;
     width: 100%;
-    background-image: url('../image/panelBack1.png');
+    background-image: url('../image/panelBack.png');
     box-sizing: border-box;
     color: #fff;
+    transition: all 1s ease 1s;
+  }
+
+  &__cover {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    height: 0;
+    width: 100%;
+    background-image: url('../image/panelBack.png');
+    box-sizing: border-box;
+    color: #fff;
+    z-index: 98;
+    transition: all 1s ease-out;
+
+    &_active {
+      position: absolute;
+      height: 100%;
+      z-index: 98;
+    }
   }
 
   &__line {
@@ -120,9 +141,10 @@
   bottom: 0;
   z-index: 99;
   flex-direction: column;
-  background-color: gray;
+  color: #fff;
+  background-image: url('../image/panelBack.png');
 
-  &_hidden {
+  &_show {
     display: flex;
   }
 
@@ -134,9 +156,9 @@
     margin-top: 20px;
   }
 
-  &__btn-start {
+  &__btn-apply {
     align-self: center;
-    margin-top: 40px;
+    margin-top: 20px;
     width: 50%;
     cursor: pointer;
   }
