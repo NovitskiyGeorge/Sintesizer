@@ -164,6 +164,32 @@
   }
 }
 
+.results {
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  bottom: 0;
+  z-index: 99;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+  background-image: url('../image/panelBack.png');
+
+  &_show {
+    display: flex;
+  }
+
+  &__btn-accept {
+    align-self: center;
+    margin-top: 20px;
+    width: 50%;
+    cursor: pointer;
+  }
+}
+
 .key {
   width: 40px;
   height: 200px;
