@@ -2,14 +2,14 @@ import "../styles/index.scss";
 
 window.onload = function () {
   let app = document.querySelector(".app");
-  let arrLogsCorrectKeys = [];
-  let arrLogsIncorrectKeys = [];
+  let logsCorrectKeys = [];
+  let logsIncorrectKeys = [];
+  let listIncorrectNotes = [];
 
   function createPiano() {
     let instrument = document.createElement("div");
     instrument.className = "piano";
     instrument.innerHTML = `
-
     <div class="piano__panel"></div>
     <div class="piano__cover"></div>
     <div class="piano__line"></div>
@@ -93,9 +93,10 @@ window.onload = function () {
     let piano = document.querySelector(".piano");
     results.className = "results";
     results.innerHTML = `
-    <h2>Результаты последного теста</h2>
-    <p>Угаданныx нот: <span class="correctNotes"></span></p>
-    <p>Неверных нот: <span class="incorrectNotes"></span></p>
+    <h2 class="results__title">Результаты последного теста</h2>
+    <p>Угаданныx нот: <span class="correctNotes"> 0</span></p>
+    <p>Неверных нот: <span class="incorrectNotes"> 0</span></p>
+    <p>Необходимо подучить ноты: <span class="listWrongNotes">  </span></p>
     <button class="results__btn-accept">ok</button>
     `;
     piano.appendChild(results);
@@ -207,6 +208,7 @@ window.onload = function () {
     startBtnMain.addEventListener("click", () => {
       if (startBtnMain.dataset.status === "disabled") {
         startBtnMain.dataset.status = "enabled";
+        clearResults();
         addRandomNote();
         indicatorOn();
         let interval = getTimer();
@@ -370,7 +372,6 @@ window.onload = function () {
   function changeStatusBtnStart() {
     let startBtn = document.querySelector(".btn-start");
     indicatorOff();
-    checkResults();
     refreshResults();
     startBtn.dataset.status = "disabled";
   }
@@ -388,6 +389,7 @@ window.onload = function () {
       addCorrectKeys(keyNote);
       showInfo("Молодец!");
     } else {
+      addToListIncorrectNotes(currentNote.dataset.name);
       addInCorrectKeys(keyNote);
       inf = currentNote.dataset.name;
       showInfo(`Не верно! Верная нота: ${inf}`);
@@ -403,25 +405,37 @@ window.onload = function () {
   }
 
   function addCorrectKeys(keyNote) {
-    arrLogsCorrectKeys.push(keyNote);
+    logsCorrectKeys.push(keyNote);
   }
 
   function addInCorrectKeys(keyNote) {
-    arrLogsIncorrectKeys.push(keyNote);
+    logsIncorrectKeys.push(keyNote);
   }
 
-  function checkResults() {
-    let resBtn = document.querySelector(".btn-results");
-    resBtn.addEventListener("click", () => {
-      showResults();
-    });
+  function addToListIncorrectNotes(note) {
+    if (!listIncorrectNotes.includes(note)) {
+      listIncorrectNotes.push(note);
+    }
+  }
+
+  let resBtn = document.querySelector(".btn-results");
+  resBtn.addEventListener("click", () => {
+    showResults();
+  });
+
+  function clearResults() {
+    logsCorrectKeys = [];
+    logsIncorrectKeys = [];
   }
 
   function refreshResults() {
     let correctNotes = document.querySelector(".correctNotes");
     let incorrectNotes = document.querySelector(".incorrectNotes");
-    correctNotes.innerHTML = arrLogsCorrectKeys.length;
-    incorrectNotes.innerHTML = arrLogsIncorrectKeys.length;
+    let wrongNotes = document.querySelector(".listWrongNotes");
+
+    correctNotes.innerHTML = logsCorrectKeys.length;
+    incorrectNotes.innerHTML = logsIncorrectKeys.length;
+    wrongNotes.innerHTML = listIncorrectNotes.join(", ");
   }
 
   function showResults() {
@@ -432,16 +446,13 @@ window.onload = function () {
   function switchShowResults() {
     let results = document.querySelector(".results");
     results.classList.toggle("results_show");
-    acceptResults();
   }
 
-  function acceptResults() {
-    let acceptBtn = document.querySelector(".results__btn-accept");
-    acceptBtn.addEventListener("click", () => {
-      movePanel();
-      switchShowResults();
-    });
-  }
+  let acceptBtn = document.querySelector(".results__btn-accept");
+  acceptBtn.addEventListener("click", () => {
+    movePanel();
+    switchShowResults();
+  });
 
   function pushKeys() {
     let currentNote = document.querySelector(".note");
