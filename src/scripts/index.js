@@ -426,6 +426,7 @@ window.onload = function () {
   function clearResults() {
     logsCorrectKeys = [];
     logsIncorrectKeys = [];
+    listIncorrectNotes = [];
   }
 
   function refreshResults() {
