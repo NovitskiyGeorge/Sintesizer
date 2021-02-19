@@ -94,9 +94,39 @@ window.onload = function () {
     results.className = "results";
     results.innerHTML = `
     <h2 class="results__title">Результаты последного теста</h2>
-    <p>Угаданныx нот: <span class="correctNotes"> 0</span></p>
-    <p>Неверных нот: <span class="incorrectNotes"> 0</span></p>
-    <p>Необходимо подучить ноты: <span class="listWrongNotes">  </span></p>
+    <table>
+      <tr><td>Угаданныx нот: </td><td class="results__correct-notes">0</td><td>Неверных нот: </td>
+      <td class="results__incorrect-notes">0</td></tr>
+    </table>
+    <table cellpadding="4" cellspacing="1" class="table-notes">
+      <tr>
+        <th>Ноты для повторения</th>
+      </tr>
+      <tr>
+        <td>1-я октава</td>
+        <td class="list-octave-1"></td>
+      </tr>
+      <tr>
+        <td>2-я октава</td>
+        <td class="list-octave-2"></td>
+      </tr>
+      <tr>
+        <td>3-я октава</td>
+        <td class="list-octave-3"></td>
+      </tr>
+      <tr>
+        <td>4-я октава</td>
+        <td class="list-octave-4"></td>
+      </tr>
+      <tr>
+        <td>малая октава</td>
+        <td class="list-octave-s"></td>
+      </tr>
+      <tr>
+        <td>большая октава</td>
+        <td class="list-octave-b"></td>
+      </tr>
+    </table>
     <button class="results__btn-accept">ok</button>
     `;
     piano.appendChild(results);
@@ -430,13 +460,11 @@ window.onload = function () {
   }
 
   function refreshResults() {
-    let correctNotes = document.querySelector(".correctNotes");
-    let incorrectNotes = document.querySelector(".incorrectNotes");
-    let wrongNotes = document.querySelector(".listWrongNotes");
+    let correctNotes = document.querySelector(".results__correct-notes");
+    let incorrectNotes = document.querySelector(".results__incorrect-notes");
 
-    correctNotes.innerHTML = logsCorrectKeys.length;
-    incorrectNotes.innerHTML = logsIncorrectKeys.length;
-    wrongNotes.innerHTML = listIncorrectNotes.join(", ");
+    correctNotes.textContent = logsCorrectKeys.length;
+    incorrectNotes.textContent = logsIncorrectKeys.length;
   }
 
   function showResults() {
