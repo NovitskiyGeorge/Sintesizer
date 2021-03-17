@@ -469,7 +469,6 @@ window.onload = function () {
     console.log(nameOctave);
     // switch(note) 
 
-
   }
 
   let resBtn = document.querySelector(".btn-results");
