@@ -5,6 +5,19 @@ window.onload = function () {
   let logsCorrectKeys = [];
   let logsIncorrectKeys = [];
   let listIncorrectNotes = [];
+  let listNotesOctaveOne = [];
+  let listNotesOctaveTwo = [];
+  let listNotesOctaveThree = [];
+  let listNotesOctaveFour = [];
+  let listNotesOctaveBig = [];
+  let listNotesOctaveSmall = [];
+
+
+
+
+
+
+
 
   function createPiano() {
     let instrument = document.createElement("div");
@@ -234,6 +247,7 @@ window.onload = function () {
   }
 
   function startTest() {
+    
     let startBtnMain = document.querySelector(".btn-start");
     startBtnMain.addEventListener("click", () => {
       if (startBtnMain.dataset.status === "disabled") {
@@ -419,7 +433,7 @@ window.onload = function () {
       addCorrectKeys(keyNote);
       showInfo("Молодец!");
     } else {
-      addToListIncorrectNotes(currentNote.dataset.name);
+      addToListIncorrectNotes(currentNote.className);
       addInCorrectKeys(keyNote);
       inf = currentNote.dataset.name;
       showInfo(`Не верно! Верная нота: ${inf}`);
@@ -436,16 +450,26 @@ window.onload = function () {
 
   function addCorrectKeys(keyNote) {
     logsCorrectKeys.push(keyNote);
+    // console.log(listIncorrectNotes);
+    
   }
 
   function addInCorrectKeys(keyNote) {
     logsIncorrectKeys.push(keyNote);
+    // console.log(listIncorrectNotes);
+
   }
 
   function addToListIncorrectNotes(note) {
     if (!listIncorrectNotes.includes(note)) {
       listIncorrectNotes.push(note);
     }
+
+    let nameOctave = note.substring(note.lastIndexOf("_") + 1);
+    console.log(nameOctave);
+    // switch(note) 
+
+
   }
 
   let resBtn = document.querySelector(".btn-results");
@@ -456,7 +480,6 @@ window.onload = function () {
   function clearResults() {
     logsCorrectKeys = [];
     logsIncorrectKeys = [];
-    listIncorrectNotes = [];
   }
 
   function refreshResults() {
