@@ -13,12 +13,6 @@ window.onload = function () {
   let listNotesOctaveSmall = [];
 
 
-
-
-
-
-
-
   function createPiano() {
     let instrument = document.createElement("div");
     instrument.className = "piano";
@@ -111,33 +105,37 @@ window.onload = function () {
       <tr><td>Угаданныx нот: </td><td class="results__correct-notes">0</td><td>Неверных нот: </td>
       <td class="results__incorrect-notes">0</td></tr>
     </table>
-    <table cellpadding="4" cellspacing="1" class="table-notes">
-      <tr>
-        <th>Ноты для повторения</th>
-      </tr>
+    <table cellpadding="4" cellspacing="1" class="results__table-notes">
+      
+        <thead class="results__table-head">
+          <tr>
+          <td>Ноты для повторения</td>
+          </tr>       
+        </thead>
+
       <tr>
         <td>1-я октава</td>
-        <td class="list-octave-1"></td>
+        <td class="list-octave-one"></td>
       </tr>
       <tr>
         <td>2-я октава</td>
-        <td class="list-octave-2"></td>
+        <td class="list-octave-two"></td>
       </tr>
       <tr>
         <td>3-я октава</td>
-        <td class="list-octave-3"></td>
+        <td class="list-octave-three"></td>
       </tr>
       <tr>
         <td>4-я октава</td>
-        <td class="list-octave-4"></td>
+        <td class="list-octave-four"></td>
       </tr>
       <tr>
         <td>малая октава</td>
-        <td class="list-octave-s"></td>
+        <td class="list-octave-small"></td>
       </tr>
       <tr>
         <td>большая октава</td>
-        <td class="list-octave-b"></td>
+        <td class="list-octave-big"></td>
       </tr>
     </table>
     <button class="results__btn-accept">ok</button>
@@ -450,13 +448,11 @@ window.onload = function () {
 
   function addCorrectKeys(keyNote) {
     logsCorrectKeys.push(keyNote);
-    // console.log(listIncorrectNotes);
     
   }
 
   function addInCorrectKeys(keyNote) {
     logsIncorrectKeys.push(keyNote);
-    // console.log(listIncorrectNotes);
 
   }
 
@@ -466,8 +462,68 @@ window.onload = function () {
     }
 
     let nameOctave = note.substring(note.lastIndexOf("_") + 1);
-    console.log(nameOctave);
-    // switch(note) 
+    let nameNote = note.slice(note.indexOf("_") + 2, note.lastIndexOf("_"));
+    let rusNote;
+
+    switch(nameNote) {
+      case 'do':
+        rusNote = 'До';
+        break;
+      case 're':
+        rusNote = 'Ре';
+        break;
+      case 'mi':
+        rusNote = 'Ми';
+        break;
+      case 'fa':
+        rusNote = 'Фа';
+        break;
+      case 'sol':
+        rusNote = 'Соль';
+        break;
+      case 'lya':
+        rusNote = 'Ля';
+        break;
+      case 'si':
+        rusNote = 'Си';
+        break;
+    }
+
+    switch(nameOctave) {
+      case 'one': 
+        if (!listNotesOctaveOne.includes(rusNote)) {
+          listNotesOctaveOne.push(rusNote);
+        }
+        break;
+      case 'two': 
+        if (!listNotesOctaveTwo.includes(rusNote)) {
+          listNotesOctaveTwo.push(rusNote);
+        }
+        break;
+      case 'three': 
+        if (!listNotesOctaveThree.includes(rusNote)) {
+          listNotesOctaveThree.push(rusNote);
+        }
+        break;
+      case 'four': 
+        if (!listNotesOctaveFour.includes(rusNote)) {
+          listNotesOctaveFour.push(rusNote);
+        }
+        break;
+      case 'big': 
+        if (!listNotesOctaveBig.includes(rusNote)) {
+          listNotesOctaveBig.push(rusNote);
+        }
+        break;
+      case 'small': 
+        if (!listNotesOctaveSmall.includes(rusNote)) {
+          listNotesOctaveSmall.push(rusNote);
+        }
+        break;     
+    }
+
+    console.log(listNotesOctaveOne);
+    console.log(listNotesOctaveTwo);
 
   }
 
@@ -484,7 +540,16 @@ window.onload = function () {
   function refreshResults() {
     let correctNotes = document.querySelector(".results__correct-notes");
     let incorrectNotes = document.querySelector(".results__incorrect-notes");
+    let notesOctaveOne = document.querySelector(".list-octave-one");
+    let notesOctaveTwo = document.querySelector(".list-octave-two");
+    let notesOctaveThree = document.querySelector(".list-octave-three");
+    let notesOctaveFour = document.querySelector(".list-octave-four");
+    let notesOctaveBig = document.querySelector(".list-octave-big");
+    let notesOctaveSmall = document.querySelector(".list-octave-small");
 
+
+    notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
+    notesOctaveTwo.textContent = listNotesOctaveTwo.join(', ');
     correctNotes.textContent = logsCorrectKeys.length;
     incorrectNotes.textContent = logsIncorrectKeys.length;
   }

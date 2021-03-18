@@ -200,6 +200,10 @@
     border: 1px solid white;
   }
 
+  &__table-head {
+    text-align: center;
+  }
+
   &_show {
     display: flex;
   }
