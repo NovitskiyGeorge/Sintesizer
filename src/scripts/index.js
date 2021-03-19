@@ -109,32 +109,32 @@ window.onload = function () {
       
         <thead class="results__table-head">
           <tr>
-          <td>Ноты для повторения</td>
+          <th colspan="2">Ноты для повторения</th>
           </tr>       
         </thead>
 
       <tr>
-        <td>1-я октава</td>
+        <td class="results__left-col">1-я октава</td>
         <td class="list-octave-one"></td>
       </tr>
       <tr>
-        <td>2-я октава</td>
+        <td class="results__left-col">2-я октава</td>
         <td class="list-octave-two"></td>
       </tr>
       <tr>
-        <td>3-я октава</td>
+        <td class="results__left-col">3-я октава</td>
         <td class="list-octave-three"></td>
       </tr>
       <tr>
-        <td>4-я октава</td>
+        <td class="results__left-col">4-я октава</td>
         <td class="list-octave-four"></td>
       </tr>
       <tr>
-        <td>малая октава</td>
+        <td class="results__left-col">малая октава</td>
         <td class="list-octave-small"></td>
       </tr>
       <tr>
-        <td>большая октава</td>
+        <td class="results__left-col">большая октава</td>
         <td class="list-octave-big"></td>
       </tr>
     </table>
@@ -521,10 +521,6 @@ window.onload = function () {
         }
         break;     
     }
-
-    console.log(listNotesOctaveOne);
-    console.log(listNotesOctaveTwo);
-
   }
 
   let resBtn = document.querySelector(".btn-results");
