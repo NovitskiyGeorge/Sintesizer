@@ -22,9 +22,9 @@ window.onload = function () {
     <div class="piano__line"></div>
     <div class="panel-control">
       <div class="configuration">
-        <button class="configuration__btn btn-start" data-status="disabled"><div class="btn-start__indicator"></div>Start</button> 
-        <button class="configuration__btn btn-tools">Options</button>
-        <button class="configuration__btn btn-results">Results</button>
+        <button class="configuration__btn btn-start" data-status="disabled"><div class="btn-start__indicator"></div>Старт</button> 
+        <button class="configuration__btn btn-tools">Настройки</button>
+        <button class="configuration__btn btn-results">Результат</button>
       </div>      
     </div>
     `;
