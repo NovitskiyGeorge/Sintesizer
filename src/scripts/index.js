@@ -546,6 +546,10 @@ window.onload = function () {
 
     notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
     notesOctaveTwo.textContent = listNotesOctaveTwo.join(', ');
+    notesOctaveThree.textContent = listNotesOctaveTwo.join(', ');
+    notesOctaveFour.textContent = listNotesOctaveTwo.join(', ');
+    notesOctaveBig.textContent = listNotesOctaveTwo.join(', ');
+    notesOctaveSmall.textContent = listNotesOctaveTwo.join(', ');
     correctNotes.textContent = logsCorrectKeys.length;
     incorrectNotes.textContent = logsIncorrectKeys.length;
   }
