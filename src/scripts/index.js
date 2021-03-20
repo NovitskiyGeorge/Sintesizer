@@ -425,16 +425,16 @@ window.onload = function () {
   }
 
   function checkWin(keyNote) {
-    let inf;
     let currentNote = document.querySelector(".note");
     if (currentNote.dataset.name.includes(keyNote)) {
       addCorrectKeys(keyNote);
       showInfo("Молодец!");
     } else {
-      addToListIncorrectNotes(currentNote.className);
+      let keyNoteRus = tranlationNotesOnRus(keyNote);
+      let currentNoteRus = tranlationNotesOnRus(currentNote.dataset.name);
+      addToListIncorrectNotes(currentNote.className, keyNoteRus);
       addInCorrectKeys(keyNote);
-      inf = currentNote.dataset.name;
-      showInfo(`Не верно! Верная нота: ${inf}`);
+      showInfo(`Не верно! Верная нота: ${currentNoteRus}`);
     }
   }
 
@@ -447,25 +447,17 @@ window.onload = function () {
   }
 
   function addCorrectKeys(keyNote) {
-    logsCorrectKeys.push(keyNote);
-    
+    logsCorrectKeys.push(keyNote);    
   }
 
   function addInCorrectKeys(keyNote) {
     logsIncorrectKeys.push(keyNote);
-
   }
 
-  function addToListIncorrectNotes(note) {
-    if (!listIncorrectNotes.includes(note)) {
-      listIncorrectNotes.push(note);
-    }
-
-    let nameOctave = note.substring(note.lastIndexOf("_") + 1);
-    let nameNote = note.slice(note.indexOf("_") + 2, note.lastIndexOf("_"));
+  function tranlationNotesOnRus(note) {
     let rusNote;
-
-    switch(nameNote) {
+    
+    switch(note) {
       case 'do':
         rusNote = 'До';
         break;
@@ -488,36 +480,40 @@ window.onload = function () {
         rusNote = 'Си';
         break;
     }
+    return rusNote;
+  }
 
+  function addToListIncorrectNotes(octave, note) {
+    let nameOctave = octave.substring(octave.lastIndexOf("_") + 1);
     switch(nameOctave) {
       case 'one': 
-        if (!listNotesOctaveOne.includes(rusNote)) {
-          listNotesOctaveOne.push(rusNote);
+        if (!listNotesOctaveOne.includes(note)) {
+          listNotesOctaveOne.push(note);
         }
         break;
       case 'two': 
-        if (!listNotesOctaveTwo.includes(rusNote)) {
-          listNotesOctaveTwo.push(rusNote);
+        if (!listNotesOctaveTwo.includes(note)) {
+          listNotesOctaveTwo.push(note);
         }
         break;
       case 'three': 
-        if (!listNotesOctaveThree.includes(rusNote)) {
-          listNotesOctaveThree.push(rusNote);
+        if (!listNotesOctaveThree.includes(note)) {
+          listNotesOctaveThree.push(note);
         }
         break;
       case 'four': 
-        if (!listNotesOctaveFour.includes(rusNote)) {
-          listNotesOctaveFour.push(rusNote);
+        if (!listNotesOctaveFour.includes(note)) {
+          listNotesOctaveFour.push(note);
         }
         break;
       case 'big': 
-        if (!listNotesOctaveBig.includes(rusNote)) {
-          listNotesOctaveBig.push(rusNote);
+        if (!listNotesOctaveBig.includes(note)) {
+          listNotesOctaveBig.push(note);
         }
         break;
       case 'small': 
-        if (!listNotesOctaveSmall.includes(rusNote)) {
-          listNotesOctaveSmall.push(rusNote);
+        if (!listNotesOctaveSmall.includes(note)) {
+          listNotesOctaveSmall.push(note);
         }
         break;     
     }
@@ -546,10 +542,10 @@ window.onload = function () {
 
     notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
     notesOctaveTwo.textContent = listNotesOctaveTwo.join(', ');
-    notesOctaveThree.textContent = listNotesOctaveTwo.join(', ');
-    notesOctaveFour.textContent = listNotesOctaveTwo.join(', ');
-    notesOctaveBig.textContent = listNotesOctaveTwo.join(', ');
-    notesOctaveSmall.textContent = listNotesOctaveTwo.join(', ');
+    notesOctaveThree.textContent = listNotesOctaveThree.join(', ');
+    notesOctaveFour.textContent = listNotesOctaveFour.join(', ');
+    notesOctaveBig.textContent = listNotesOctaveBig.join(', ');
+    notesOctaveSmall.textContent = listNotesOctaveSmall.join(', ');
     correctNotes.textContent = logsCorrectKeys.length;
     incorrectNotes.textContent = logsIncorrectKeys.length;
   }

@@ -49,7 +49,7 @@ h6 { font-weight: 400; }
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 750px;
   background-image: url('../image/fone.png');
 }
 
@@ -63,15 +63,16 @@ h6 { font-weight: 400; }
 
   &__clef {
     &_treble {
-      width: 100px;
-      height: 170px;
+      margin-top: -4px;
+      width: 136px;
+      height: 218px;
       background-image: url('../image/treble.png');
       background-repeat: no-repeat;
       background-size: 100%;
     }
 
     &_bass {
-      margin-top: 40px;
+      margin-top: 42px;
       width: 170px;
       height: 140px;
       background-image: url('../image/bass.png');
@@ -125,15 +126,15 @@ h6 { font-weight: 400; }
       margin-right: 5px;
       width: 5px;
       height: 12px;
-      background-color: rgba(255, 0, 0, 1);
+      background-color: rgba(240, 5, 12, 1);
       box-shadow: 0 0 9px 1px rgba(255, 0, 0, 1);
     }
   }
 }
 
 .piano {
-  width: 400px;
-  height: 320px;
+  min-width: 400px;
+  min-height: 320px;
   border: 4px solid #000;
   position: relative;
 
@@ -188,17 +189,15 @@ h6 { font-weight: 400; }
 .key {
   width: 43px;
   height: 99%;
-  border-radius: 0 0 3px 3px;
 
   &_white {
     background-image: url('../image/keyFon.png');
+    border-radius: 0 0 4px 4px;
     border: 1px solid #000;
   }
 
   &_black {
     position: absolute;
-    border-radius: 0;
-    // border: 2px solid #000;
     width: 24px;
     height: 162px;
     background-image: url('../image/keyBlack.png');
