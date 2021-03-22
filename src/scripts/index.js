@@ -430,9 +430,8 @@ window.onload = function () {
       addCorrectKeys(keyNote);
       showInfo("Молодец!");
     } else {
-      let keyNoteRus = tranlationNotesOnRus(keyNote);
       let currentNoteRus = tranlationNotesOnRus(currentNote.dataset.name);
-      addToListIncorrectNotes(currentNote.className, keyNoteRus);
+      addToListIncorrectNotes(currentNote.className, currentNoteRus);
       addInCorrectKeys(keyNote);
       showInfo(`Не верно! Верная нота: ${currentNoteRus}`);
     }
@@ -527,6 +526,12 @@ window.onload = function () {
   function clearResults() {
     logsCorrectKeys = [];
     logsIncorrectKeys = [];
+    listNotesOctaveOne = [];
+    listNotesOctaveTwo = [];
+    listNotesOctaveThree = [];
+    listNotesOctaveFour = [];
+    listNotesOctaveBig = [];
+    listNotesOctaveSmall = [];
   }
 
   function refreshResults() {
@@ -538,6 +543,8 @@ window.onload = function () {
     let notesOctaveFour = document.querySelector(".list-octave-four");
     let notesOctaveBig = document.querySelector(".list-octave-big");
     let notesOctaveSmall = document.querySelector(".list-octave-small");
+
+    
 
 
     notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
