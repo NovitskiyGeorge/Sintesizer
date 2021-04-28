@@ -7,7 +7,9 @@
 nav,
 footer,
 header,
-aside { display: block; }
+aside {
+  display: block;
+}
 
 html,
 body {
@@ -22,27 +24,43 @@ body {
 
 input,
 button,
-textarea { font-family: inherit; }
+textarea {
+  font-family: inherit;
+}
 
-input::-ms-clear { display: none; }
+input::-ms-clear {
+  display: none;
+}
 
-button { cursor: pointer; }
+button {
+  cursor: pointer;
+}
 
 a,
-a:visited { text-decoration: none; }
+a:visited {
+  text-decoration: none;
+}
 
-a:hover { text-decoration: none; }
+a:hover {
+  text-decoration: none;
+}
 
-ul li { list-style: none; }
+ul li {
+  list-style: none;
+}
 
-img { vertical-align: top; }
+img {
+  vertical-align: top;
+}
 
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 { font-weight: 400; }
+h6 {
+  font-weight: 400;
+}
 
 .app {
   display: flex;
@@ -50,14 +68,14 @@ h6 { font-weight: 400; }
   flex-direction: column;
   align-items: center;
   min-height: 750px;
-  background-image: url('../image/fone.png');
+  background-image: url("../image/fone.png");
 }
 
 .stan {
   display: flex;
   min-width: 600px;
   min-height: 300px;
-  background-image: url('../image/stan.png');
+  background-image: url("../image/stan.png");
   background-repeat: no-repeat;
   background-size: 100%;
 
@@ -66,7 +84,7 @@ h6 { font-weight: 400; }
       margin-top: -4px;
       width: 136px;
       height: 218px;
-      background-image: url('../image/treble.png');
+      background-image: url("../image/treble.png");
       background-repeat: no-repeat;
       background-size: 100%;
     }
@@ -75,7 +93,7 @@ h6 { font-weight: 400; }
       margin-top: 42px;
       width: 170px;
       height: 140px;
-      background-image: url('../image/bass.png');
+      background-image: url("../image/bass.png");
       background-repeat: no-repeat;
       background-size: 100%;
     }
@@ -103,12 +121,22 @@ h6 { font-weight: 400; }
     border-top: 1px solid rgba(255, 255, 255, 0.7);
     border-left: 1px solid rgba(255, 255, 255, 0.7);
     width: 74px;
+    height: 22px;
     margin-top: 10px;
     background: transparent;
     color: rgba(255, 255, 255, 0.7);
     outline: none;
     cursor: pointer;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.8);
+
+    &:active {
+      width: 72px;
+      height: 20px;
+      padding: 1px 5px;
+      margin: 11px 0 1px 0;
+      font-size: 13.5px;
+      box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.9);
+    }
   }
 }
 
@@ -145,7 +173,7 @@ h6 { font-weight: 400; }
     font-size: 20px;
     height: 80px;
     width: 100%;
-    background-image: url('../image/panelBack.png');
+    background-image: url("../image/panelBack.png");
     box-sizing: border-box;
     color: #fff;
     transition: all 1s ease 1s;
@@ -157,7 +185,7 @@ h6 { font-weight: 400; }
     text-align: center;
     height: 0;
     width: 100%;
-    background-image: url('../image/panelBack.png');
+    background-image: url("../image/panelBack.png");
     box-sizing: border-box;
     color: #fff;
     z-index: 98;
@@ -190,7 +218,7 @@ h6 { font-weight: 400; }
   height: 99%;
 
   &_white {
-    background-image: url('../image/keyFon.png');
+    background-image: url("../image/keyFon.png");
     border-radius: 0 0 4px 4px;
     border: 1px solid #000;
   }
@@ -199,7 +227,7 @@ h6 { font-weight: 400; }
     position: absolute;
     width: 24px;
     height: 162px;
-    background-image: url('../image/keyBlack.png');
+    background-image: url("../image/keyBlack.png");
     background-repeat: no-repeat;
     background-size: 100%;
     z-index: 1;
@@ -227,7 +255,7 @@ h6 { font-weight: 400; }
 
   &_push {
     // height: 98%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
     z-index: 0;
   }
 }
@@ -244,7 +272,7 @@ h6 { font-weight: 400; }
   flex-direction: column;
   font-size: 20px;
   color: #fff;
-  background-image: url('../image/panelBack.png');
+  background-image: url("../image/panelBack.png");
 
   &_show {
     display: flex;
@@ -282,7 +310,7 @@ h6 { font-weight: 400; }
   z-index: 99;
   flex-direction: column;
   color: #fff;
-  background-image: url('../image/panelBack.png');
+  background-image: url("../image/panelBack.png");
 
   &__title {
     margin: 10px;
@@ -340,13 +368,13 @@ h6 { font-weight: 400; }
   margin-left: 300px;
 
   &__do_one {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 100px;
 
     &::before {
       margin-left: 26px;
       margin-top: 102px;
-      content: '';
+      content: "";
       width: 50px;
       height: 4px;
       background-color: #000;
@@ -355,68 +383,68 @@ h6 { font-weight: 400; }
   }
 
   &__re_one {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 78px;
   }
 
   &__mi_one {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 65px;
   }
 
   &__fa_one {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 49px;
   }
 
   &__sol_one {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 33px;
   }
 
   &__lya_one {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 18px;
   }
 
   &__si_one {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 90px;
   }
 
   &__do_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 75px;
   }
 
   &__re_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 60px;
   }
 
   &__mi_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 45px;
   }
 
   &__fa_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 30px;
   }
 
   &__sol_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 15px;
   }
 
   &__lya_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 0;
 
     &::before {
       margin-left: 43px;
       margin-top: 15px;
-      content: '';
+      content: "";
       width: 50px;
       height: 4px;
       background-color: #000;
@@ -425,13 +453,13 @@ h6 { font-weight: 400; }
   }
 
   &__si_two {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: -15px;
 
     &::before {
       margin-left: 42px;
       margin-top: 30px;
-      content: '';
+      content: "";
       width: 50px;
       height: 4px;
       background-color: #000;
@@ -440,13 +468,13 @@ h6 { font-weight: 400; }
   }
 
   &__do_three {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: -30px;
 
     &::after {
       margin-left: 42px;
       margin-top: 45px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -456,7 +484,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 42px;
       margin-top: 15px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -465,13 +493,13 @@ h6 { font-weight: 400; }
   }
 
   &__re_three {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: -45px;
 
     &::after {
       margin-left: 42px;
       margin-top: 60px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -481,7 +509,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 42px;
       margin-top: 30px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -490,13 +518,13 @@ h6 { font-weight: 400; }
   }
 
   &__mi_three {
-    background-image: url('../image/noteDownStreak.png');
+    background-image: url("../image/noteDownStreak.png");
     margin-top: -60px;
 
     &::after {
       margin-left: 42px;
       margin-top: 75px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -506,7 +534,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 42px;
       margin-top: 45px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -515,13 +543,13 @@ h6 { font-weight: 400; }
   }
 
   &__fa_small {
-    background-image: url('../image/noteUpStreak.png');
+    background-image: url("../image/noteUpStreak.png");
     margin-top: 150px;
 
     &::after {
       margin-left: 21px;
       margin-top: 45px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -531,7 +559,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 21px;
       margin-top: 75px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -540,13 +568,13 @@ h6 { font-weight: 400; }
   }
 
   &__sol_small {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 135px;
 
     &::after {
       margin-left: 21px;
       margin-top: 60px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -556,7 +584,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 21px;
       margin-top: 90px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -565,13 +593,13 @@ h6 { font-weight: 400; }
   }
 
   &__lya_small {
-    background-image: url('../image/noteUpStreak.png');
+    background-image: url("../image/noteUpStreak.png");
     margin-top: 120px;
 
     &::after {
       margin-left: 21px;
       margin-top: 75px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -580,13 +608,13 @@ h6 { font-weight: 400; }
   }
 
   &__si_small {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 105px;
 
     &::after {
       margin-left: 21px;
       margin-top: 90px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -595,13 +623,13 @@ h6 { font-weight: 400; }
   }
 
   &__do_big {
-    background-image: url('../image/noteUpStreak.png');
+    background-image: url("../image/noteUpStreak.png");
     margin-top: 120px;
 
     &::after {
       margin-left: 21px;
       margin-top: 75px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -610,13 +638,13 @@ h6 { font-weight: 400; }
   }
 
   &__re_big {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 105px;
 
     &::after {
       margin-left: 21px;
       margin-top: 90px;
-      content: '';
+      content: "";
       width: 57px;
       height: 3px;
       background-color: #000;
@@ -625,13 +653,13 @@ h6 { font-weight: 400; }
   }
 
   &__mi_big {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 100px;
 
     &::before {
       margin-left: 26px;
       margin-top: 102px;
-      content: '';
+      content: "";
       width: 50px;
       height: 4px;
       background-color: #000;
@@ -640,68 +668,68 @@ h6 { font-weight: 400; }
   }
 
   &__fa_big {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 78px;
   }
 
   &__sol_big {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 65px;
   }
 
   &__lya_big {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 49px;
   }
 
   &__si_big {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 33px;
   }
 
   &__do-bass_small {
-    background-image: url('../image/noteUp.png');
+    background-image: url("../image/noteUp.png");
     margin-top: 18px;
   }
 
   &__re-bass_small {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 90px;
   }
 
   &__mi-bass_small {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 75px;
   }
 
   &__fa-bass_small {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 60px;
   }
 
   &__sol-bass_small {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 45px;
   }
 
   &__lya-bass_small {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 30px;
   }
 
   &__si-bass_small {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 15px;
   }
 
   &__do-bass_one {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: 0;
 
     &::before {
       margin-left: 43px;
       margin-top: 15px;
-      content: '';
+      content: "";
       width: 50px;
       height: 4px;
       background-color: #000;
@@ -710,13 +738,13 @@ h6 { font-weight: 400; }
   }
 
   &__re-bass_one {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: -15px;
 
     &::before {
       margin-left: 42px;
       margin-top: 30px;
-      content: '';
+      content: "";
       width: 50px;
       height: 4px;
       background-color: #000;
@@ -725,13 +753,13 @@ h6 { font-weight: 400; }
   }
 
   &__mi-bass_one {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: -30px;
 
     &::after {
       margin-left: 42px;
       margin-top: 45px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -741,7 +769,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 42px;
       margin-top: 15px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -750,13 +778,13 @@ h6 { font-weight: 400; }
   }
 
   &__fa-bass_one {
-    background-image: url('../image/noteDown.png');
+    background-image: url("../image/noteDown.png");
     margin-top: -45px;
 
     &::after {
       margin-left: 42px;
       margin-top: 60px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -766,7 +794,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 42px;
       margin-top: 30px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -775,13 +803,13 @@ h6 { font-weight: 400; }
   }
 
   &__sol-bass_one {
-    background-image: url('../image/noteDownStreak.png');
+    background-image: url("../image/noteDownStreak.png");
     margin-top: -60px;
 
     &::after {
       margin-left: 42px;
       margin-top: 75px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;
@@ -791,7 +819,7 @@ h6 { font-weight: 400; }
     &::before {
       margin-left: 42px;
       margin-top: 45px;
-      content: '';
+      content: "";
       width: 50px;
       height: 3px;
       background-color: #000;

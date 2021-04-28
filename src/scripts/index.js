@@ -34,17 +34,91 @@ window.onload = function () {
   createPiano();
 
   function getKeys() {
-    let keysPromise = fetch("http://localhost:3000/keys").then((res) => {
-      return res.json();
-    });
-    keysPromise.then(
-      (res) => {
-        createKeyboard(res);
+    // let keysPromise = fetch("http://localhost:3000/keys").then((res) => {
+    //   return res.json();
+    // });
+    // keysPromise.then(
+    //   (res) => {
+    //     createKeyboard(res);
+    //   },
+    //   (err) => {
+    //     console.log("Error");
+    //   }
+    // );
+    createKeyboard([
+      {
+        id: 1,
+        name: 'do',
+        color: 'white',
+        url: 'src/audio/do.wav',
       },
-      (err) => {
-        console.log("Error");
-      }
-    );
+      {
+        id: 2,
+        name: 'doDies',
+        color: 'black',
+        url: 'src/audio/doDies.wav',
+      },
+      {
+        id: 3,
+        name: 're',
+        color: 'white',
+        url: 'src/audio/re.wav',
+      },
+      {
+        id: 4,
+        name: 'reDies',
+        color: 'black',
+        url: 'src/audio/reDies.wav',
+      },
+      {
+        id: 5,
+        name: 'mi',
+        color: 'white',
+        url: 'src/audio/mi.wav',
+      },
+      {
+        id: 6,
+        name: 'fa',
+        color: 'white',
+        url: 'src/audio/fa.wav',
+      },
+      {
+        id: 7,
+        name: 'faDies',
+        color: 'black',
+        url: 'src/audio/faDies.wav',
+      },
+      {
+        id: 8,
+        name: 'sol',
+        color: 'white',
+        url: 'src/audio/sol.wav',
+      },
+      {
+        id: 9,
+        name: 'solDies',
+        color: 'black',
+        url: 'src/audio/solDies.wav',
+      },
+      {
+        id: 10,
+        name: 'lya',
+        color: 'white',
+        url: 'src/audio/lya.wav',
+      },
+      {
+        id: 11,
+        name: 'lyaDies',
+        color: 'black',
+        url: 'src/audio/lyaDies.wav',
+      },
+      {
+        id: 12,
+        name: 'si',
+        color: 'white',
+        url: 'src/audio/si.wav',
+      },
+    ]);
   }
 
   function createKeyboard(keys) {
@@ -245,7 +319,7 @@ window.onload = function () {
   }
 
   function startTest() {
-    
+
     let startBtnMain = document.querySelector(".btn-start");
     startBtnMain.addEventListener("click", () => {
       if (startBtnMain.dataset.status === "disabled") {
@@ -446,7 +520,7 @@ window.onload = function () {
   }
 
   function addCorrectKeys(keyNote) {
-    logsCorrectKeys.push(keyNote);    
+    logsCorrectKeys.push(keyNote);
   }
 
   function addInCorrectKeys(keyNote) {
@@ -455,8 +529,8 @@ window.onload = function () {
 
   function tranlationNotesOnRus(note) {
     let rusNote;
-    
-    switch(note) {
+
+    switch (note) {
       case 'do':
         rusNote = 'До';
         break;
@@ -484,37 +558,37 @@ window.onload = function () {
 
   function addToListIncorrectNotes(octave, note) {
     let nameOctave = octave.substring(octave.lastIndexOf("_") + 1);
-    switch(nameOctave) {
-      case 'one': 
+    switch (nameOctave) {
+      case 'one':
         if (!listNotesOctaveOne.includes(note)) {
           listNotesOctaveOne.push(note);
         }
         break;
-      case 'two': 
+      case 'two':
         if (!listNotesOctaveTwo.includes(note)) {
           listNotesOctaveTwo.push(note);
         }
         break;
-      case 'three': 
+      case 'three':
         if (!listNotesOctaveThree.includes(note)) {
           listNotesOctaveThree.push(note);
         }
         break;
-      case 'four': 
+      case 'four':
         if (!listNotesOctaveFour.includes(note)) {
           listNotesOctaveFour.push(note);
         }
         break;
-      case 'big': 
+      case 'big':
         if (!listNotesOctaveBig.includes(note)) {
           listNotesOctaveBig.push(note);
         }
         break;
-      case 'small': 
+      case 'small':
         if (!listNotesOctaveSmall.includes(note)) {
           listNotesOctaveSmall.push(note);
         }
-        break;     
+        break;
     }
   }
 
@@ -544,7 +618,7 @@ window.onload = function () {
     let notesOctaveBig = document.querySelector(".list-octave-big");
     let notesOctaveSmall = document.querySelector(".list-octave-small");
 
-    
+
 
 
     notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
@@ -770,22 +844,3 @@ window.onload = function () {
     }
   }
 };
-
-// class User {
-//   constructor(name) {
-//     this.name = name;
-//   }
-//   getUsers() {
-//     let usersPromise = fetch('http://localhost:3000/users').then(res => {
-//     return res.json();
-//   });
-//   usersPromise.then (
-//     res => {
-//       // console.log(res);
-//     },
-//     err => {
-//       console.log('Error');
-//     }
-//   );
-//   }
-// }
