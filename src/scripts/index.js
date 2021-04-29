@@ -677,11 +677,11 @@ window.onload = function () {
     let notesOctaveSmall = document.querySelector(".list-octave-small");
 
     notesOctaveOne.textContent = sortListNotesOctaveOne.join(', ');
-    notesOctaveTwo.textContent = listNotesOctaveTwo.join(', ');
-    notesOctaveThree.textContent = listNotesOctaveThree.join(', ');
-    notesOctaveFour.textContent = listNotesOctaveFour.join(', ');
-    notesOctaveBig.textContent = listNotesOctaveBig.join(', ');
-    notesOctaveSmall.textContent = listNotesOctaveSmall.join(', ');
+    notesOctaveTwo.textContent = sortListNotesOctaveTwo.join(', ');
+    notesOctaveThree.textContent = sortListNotesOctaveThree.join(', ');
+    notesOctaveFour.textContent = sortListNotesOctaveFour.join(', ');
+    notesOctaveBig.textContent = sortListNotesOctaveBig.join(', ');
+    notesOctaveSmall.textContent = sortListNotesOctaveSmall.join(', ');
     correctNotes.textContent = logsCorrectKeys.length;
     incorrectNotes.textContent = logsIncorrectKeys.length;
   }
