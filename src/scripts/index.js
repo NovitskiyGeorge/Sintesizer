@@ -12,6 +12,13 @@ window.onload = function () {
   let listNotesOctaveBig = [];
   let listNotesOctaveSmall = [];
 
+  let sortListNotesOctaveOne = [];
+  let sortListNotesOctaveTwo = [];
+  let sortListNotesOctaveThree = [];
+  let sortListNotesOctaveFour = [];
+  let sortListNotesOctaveBig = [];
+  let sortListNotesOctaveSmall = [];
+
 
   function createPiano() {
     let instrument = document.createElement("div");
@@ -617,9 +624,6 @@ window.onload = function () {
     let notesOctaveFour = document.querySelector(".list-octave-four");
     let notesOctaveBig = document.querySelector(".list-octave-big");
     let notesOctaveSmall = document.querySelector(".list-octave-small");
-
-
-
 
     notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
     notesOctaveTwo.textContent = listNotesOctaveTwo.join(', ');
