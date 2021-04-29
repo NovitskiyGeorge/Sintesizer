@@ -495,6 +495,7 @@ window.onload = function () {
   function changeStatusBtnStart() {
     let startBtn = document.querySelector(".btn-start");
     indicatorOff();
+    sortListNotes();
     refreshResults();
     startBtn.dataset.status = "disabled";
   }
@@ -604,6 +605,56 @@ window.onload = function () {
     showResults();
   });
 
+  function sortListNotes() {
+    if (listNotesOctaveOne.includes('До')) sortListNotesOctaveOne.push('До');
+    if (listNotesOctaveOne.includes('Ре')) sortListNotesOctaveOne.push('Ре');
+    if (listNotesOctaveOne.includes('Ми')) sortListNotesOctaveOne.push('Ми');
+    if (listNotesOctaveOne.includes('Фа')) sortListNotesOctaveOne.push('Фа');
+    if (listNotesOctaveOne.includes('Соль')) sortListNotesOctaveOne.push('Соль');
+    if (listNotesOctaveOne.includes('Ля')) sortListNotesOctaveOne.push('Ля');
+    if (listNotesOctaveOne.includes('Си')) sortListNotesOctaveOne.push('Си');
+
+    if (listNotesOctaveTwo.includes('До')) sortListNotesOctaveTwo.push('До');
+    if (listNotesOctaveTwo.includes('Ре')) sortListNotesOctaveTwo.push('Ре');
+    if (listNotesOctaveTwo.includes('Ми')) sortListNotesOctaveTwo.push('Ми');
+    if (listNotesOctaveTwo.includes('Фа')) sortListNotesOctaveTwo.push('Фа');
+    if (listNotesOctaveTwo.includes('Соль')) sortListNotesOctaveTwo.push('Соль');
+    if (listNotesOctaveTwo.includes('Ля')) sortListNotesOctaveTwo.push('Ля');
+    if (listNotesOctaveTwo.includes('Си')) sortListNotesOctaveTwo.push('Си');
+
+    if (listNotesOctaveThree.includes('До')) sortListNotesOctaveThree.push('До');
+    if (listNotesOctaveThree.includes('Ре')) sortListNotesOctaveThree.push('Ре');
+    if (listNotesOctaveThree.includes('Ми')) sortListNotesOctaveThree.push('Ми');
+    if (listNotesOctaveThree.includes('Фа')) sortListNotesOctaveThree.push('Фа');
+    if (listNotesOctaveThree.includes('Соль')) sortListNotesOctaveThree.push('Соль');
+    if (listNotesOctaveThree.includes('Ля')) sortListNotesOctaveThree.push('Ля');
+    if (listNotesOctaveThree.includes('Си')) sortListNotesOctaveThree.push('Си');
+
+    if (listNotesOctaveFour.includes('До')) sortListNotesOctaveFour.push('До');
+    if (listNotesOctaveFour.includes('Ре')) sortListNotesOctaveFour.push('Ре');
+    if (listNotesOctaveFour.includes('Ми')) sortListNotesOctaveFour.push('Ми');
+    if (listNotesOctaveFour.includes('Фа')) sortListNotesOctaveFour.push('Фа');
+    if (listNotesOctaveFour.includes('Соль')) sortListNotesOctaveFour.push('Соль');
+    if (listNotesOctaveFour.includes('Ля')) sortListNotesOctaveFour.push('Ля');
+    if (listNotesOctaveFour.includes('Си')) sortListNotesOctaveFour.push('Си');
+
+    if (listNotesOctaveBig.includes('До')) sortListNotesOctaveBig.push('До');
+    if (listNotesOctaveBig.includes('Ре')) sortListNotesOctaveBig.push('Ре');
+    if (listNotesOctaveBig.includes('Ми')) sortListNotesOctaveBig.push('Ми');
+    if (listNotesOctaveBig.includes('Фа')) sortListNotesOctaveBig.push('Фа');
+    if (listNotesOctaveBig.includes('Соль')) sortListNotesOctaveBig.push('Соль');
+    if (listNotesOctaveBig.includes('Ля')) sortListNotesOctaveBig.push('Ля');
+    if (listNotesOctaveBig.includes('Си')) sortListNotesOctaveBig.push('Си');
+
+    if (listNotesOctaveSmall.includes('До')) sortListNotesOctaveSmall.push('До');
+    if (listNotesOctaveSmall.includes('Ре')) sortListNotesOctaveSmall.push('Ре');
+    if (listNotesOctaveSmall.includes('Ми')) sortListNotesOctaveSmall.push('Ми');
+    if (listNotesOctaveSmall.includes('Фа')) sortListNotesOctaveSmall.push('Фа');
+    if (listNotesOctaveSmall.includes('Соль')) sortListNotesOctaveSmall.push('Соль');
+    if (listNotesOctaveSmall.includes('Ля')) sortListNotesOctaveSmall.push('Ля');
+    if (listNotesOctaveSmall.includes('Си')) sortListNotesOctaveSmall.push('Си');
+  }
+
   function clearResults() {
     logsCorrectKeys = [];
     logsIncorrectKeys = [];
@@ -625,7 +676,7 @@ window.onload = function () {
     let notesOctaveBig = document.querySelector(".list-octave-big");
     let notesOctaveSmall = document.querySelector(".list-octave-small");
 
-    notesOctaveOne.textContent = listNotesOctaveOne.join(', ');
+    notesOctaveOne.textContent = sortListNotesOctaveOne.join(', ');
     notesOctaveTwo.textContent = listNotesOctaveTwo.join(', ');
     notesOctaveThree.textContent = listNotesOctaveThree.join(', ');
     notesOctaveFour.textContent = listNotesOctaveFour.join(', ');
