@@ -298,7 +298,10 @@ window.onload = function () {
             item.value === "octaveSmall" ||
             item.value === "octaveOne"
           ) {
+            item.disabled = false;
             item.checked = true;
+          } else {
+            item.disabled = true;
           }
         });
         break;
@@ -310,7 +313,10 @@ window.onload = function () {
             item.value === "octaveThree" ||
             item.value === "octaveSmall"
           ) {
+            item.disabled = false;
             item.checked = true;
+          } else {
+            item.disabled = true;
           }
         });
         break;
