@@ -2,15 +2,14 @@ import "../styles/index.scss";
 
 window.onload = function () {
   let app = document.querySelector(".app");
-  let logsCorrectKeys = [];
-  let logsIncorrectKeys = [];
-  let listIncorrectNotes = [];
-  let listNotesOctaveOne = [];
-  let listNotesOctaveTwo = [];
-  let listNotesOctaveThree = [];
-  let listNotesOctaveFour = [];
-  let listNotesOctaveBig = [];
-  let listNotesOctaveSmall = [];
+  let countCorrectNotes = 0;
+  let countInCorrectNotes = 0;
+  let listNotesOctaveOne = new Set();
+  let listNotesOctaveTwo = new Set();
+  let listNotesOctaveThree = new Set();
+  let listNotesOctaveFour = new Set();
+  let listNotesOctaveBig = new Set();
+  let listNotesOctaveSmall = new Set();
 
   let sortListNotesOctaveOne = [];
   let sortListNotesOctaveTwo = [];
@@ -162,9 +161,9 @@ window.onload = function () {
     <div><input type="checkbox" class="checkbox-octave" value="octaveOne" checked> 1-я октава</div>
     <div><input type="checkbox" class="checkbox-octave" value="octaveTwo" checked> 2-я октава</div>
     <div><input type="checkbox" class="checkbox-octave" value="octaveThree"> 3-я октава</div>
-    <div><input type="checkbox" class="checkbox-octave" value="octaveFour"> 4-я октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveFour" disabled> 4-я октава</div>
     <div><input type="checkbox" class="checkbox-octave" value="octaveSmall"> малая октава</div>
-    <div><input type="checkbox" class="checkbox-octave" value="octaveBig"> большая октава</div>
+    <div><input type="checkbox" class="checkbox-octave" value="octaveBig" disabled> большая октава</div>
     <div class="tools__timer"> Время
       <input type="checkbox" class="timer" value="30000" checked> 30 секунд
       <input type="checkbox" class="timer" value="60000"> 60 секунд
@@ -515,12 +514,12 @@ window.onload = function () {
   function checkWin(keyNote) {
     let currentNote = document.querySelector(".note");
     if (currentNote.dataset.name.includes(keyNote)) {
-      addCorrectKeys(keyNote);
+      countCorrectNotes++;
       showInfo("Молодец!");
     } else {
       let currentNoteRus = tranlationNotesOnRus(currentNote.dataset.name);
       addToListIncorrectNotes(currentNote.className, currentNoteRus);
-      addInCorrectKeys(keyNote);
+      countInCorrectNotes++;
       showInfo(`Не верно! Верная нота: ${currentNoteRus}`);
     }
   }
@@ -531,14 +530,6 @@ window.onload = function () {
     if (statusStart === "disabled") {
       infPanel.innerText = info;
     }
-  }
-
-  function addCorrectKeys(keyNote) {
-    logsCorrectKeys.push(keyNote);
-  }
-
-  function addInCorrectKeys(keyNote) {
-    logsIncorrectKeys.push(keyNote);
   }
 
   function tranlationNotesOnRus(note) {
@@ -574,34 +565,22 @@ window.onload = function () {
     let nameOctave = octave.substring(octave.lastIndexOf("_") + 1);
     switch (nameOctave) {
       case 'one':
-        if (!listNotesOctaveOne.includes(note)) {
-          listNotesOctaveOne.push(note);
-        }
+        listNotesOctaveOne.add(note);
         break;
       case 'two':
-        if (!listNotesOctaveTwo.includes(note)) {
-          listNotesOctaveTwo.push(note);
-        }
+        listNotesOctaveTwo.add(note);
         break;
       case 'three':
-        if (!listNotesOctaveThree.includes(note)) {
-          listNotesOctaveThree.push(note);
-        }
+        listNotesOctaveThree.add(note);
         break;
       case 'four':
-        if (!listNotesOctaveFour.includes(note)) {
-          listNotesOctaveFour.push(note);
-        }
+        listNotesOctaveFour.add(note);
         break;
       case 'big':
-        if (!listNotesOctaveBig.includes(note)) {
-          listNotesOctaveBig.push(note);
-        }
+        listNotesOctaveBig.add(note);
         break;
       case 'small':
-        if (!listNotesOctaveSmall.includes(note)) {
-          listNotesOctaveSmall.push(note);
-        }
+        listNotesOctaveSmall.add(note);
         break;
     }
   }
@@ -612,64 +591,71 @@ window.onload = function () {
   });
 
   function sortListNotes() {
-    if (listNotesOctaveOne.includes('До')) sortListNotesOctaveOne.push('До');
-    if (listNotesOctaveOne.includes('Ре')) sortListNotesOctaveOne.push('Ре');
-    if (listNotesOctaveOne.includes('Ми')) sortListNotesOctaveOne.push('Ми');
-    if (listNotesOctaveOne.includes('Фа')) sortListNotesOctaveOne.push('Фа');
-    if (listNotesOctaveOne.includes('Соль')) sortListNotesOctaveOne.push('Соль');
-    if (listNotesOctaveOne.includes('Ля')) sortListNotesOctaveOne.push('Ля');
-    if (listNotesOctaveOne.includes('Си')) sortListNotesOctaveOne.push('Си');
+    if (listNotesOctaveOne.has('До')) sortListNotesOctaveOne.push('До');
+    if (listNotesOctaveOne.has('Ре')) sortListNotesOctaveOne.push('Ре');
+    if (listNotesOctaveOne.has('Ми')) sortListNotesOctaveOne.push('Ми');
+    if (listNotesOctaveOne.has('Фа')) sortListNotesOctaveOne.push('Фа');
+    if (listNotesOctaveOne.has('Соль')) sortListNotesOctaveOne.push('Соль');
+    if (listNotesOctaveOne.has('Ля')) sortListNotesOctaveOne.push('Ля');
+    if (listNotesOctaveOne.has('Си')) sortListNotesOctaveOne.push('Си');
 
-    if (listNotesOctaveTwo.includes('До')) sortListNotesOctaveTwo.push('До');
-    if (listNotesOctaveTwo.includes('Ре')) sortListNotesOctaveTwo.push('Ре');
-    if (listNotesOctaveTwo.includes('Ми')) sortListNotesOctaveTwo.push('Ми');
-    if (listNotesOctaveTwo.includes('Фа')) sortListNotesOctaveTwo.push('Фа');
-    if (listNotesOctaveTwo.includes('Соль')) sortListNotesOctaveTwo.push('Соль');
-    if (listNotesOctaveTwo.includes('Ля')) sortListNotesOctaveTwo.push('Ля');
-    if (listNotesOctaveTwo.includes('Си')) sortListNotesOctaveTwo.push('Си');
+    if (listNotesOctaveTwo.has('До')) sortListNotesOctaveTwo.push('До');
+    if (listNotesOctaveTwo.has('Ре')) sortListNotesOctaveTwo.push('Ре');
+    if (listNotesOctaveTwo.has('Ми')) sortListNotesOctaveTwo.push('Ми');
+    if (listNotesOctaveTwo.has('Фа')) sortListNotesOctaveTwo.push('Фа');
+    if (listNotesOctaveTwo.has('Соль')) sortListNotesOctaveTwo.push('Соль');
+    if (listNotesOctaveTwo.has('Ля')) sortListNotesOctaveTwo.push('Ля');
+    if (listNotesOctaveTwo.has('Си')) sortListNotesOctaveTwo.push('Си');
 
-    if (listNotesOctaveThree.includes('До')) sortListNotesOctaveThree.push('До');
-    if (listNotesOctaveThree.includes('Ре')) sortListNotesOctaveThree.push('Ре');
-    if (listNotesOctaveThree.includes('Ми')) sortListNotesOctaveThree.push('Ми');
-    if (listNotesOctaveThree.includes('Фа')) sortListNotesOctaveThree.push('Фа');
-    if (listNotesOctaveThree.includes('Соль')) sortListNotesOctaveThree.push('Соль');
-    if (listNotesOctaveThree.includes('Ля')) sortListNotesOctaveThree.push('Ля');
-    if (listNotesOctaveThree.includes('Си')) sortListNotesOctaveThree.push('Си');
+    if (listNotesOctaveThree.has('До')) sortListNotesOctaveThree.push('До');
+    if (listNotesOctaveThree.has('Ре')) sortListNotesOctaveThree.push('Ре');
+    if (listNotesOctaveThree.has('Ми')) sortListNotesOctaveThree.push('Ми');
+    if (listNotesOctaveThree.has('Фа')) sortListNotesOctaveThree.push('Фа');
+    if (listNotesOctaveThree.has('Соль')) sortListNotesOctaveThree.push('Соль');
+    if (listNotesOctaveThree.has('Ля')) sortListNotesOctaveThree.push('Ля');
+    if (listNotesOctaveThree.has('Си')) sortListNotesOctaveThree.push('Си');
 
-    if (listNotesOctaveFour.includes('До')) sortListNotesOctaveFour.push('До');
-    if (listNotesOctaveFour.includes('Ре')) sortListNotesOctaveFour.push('Ре');
-    if (listNotesOctaveFour.includes('Ми')) sortListNotesOctaveFour.push('Ми');
-    if (listNotesOctaveFour.includes('Фа')) sortListNotesOctaveFour.push('Фа');
-    if (listNotesOctaveFour.includes('Соль')) sortListNotesOctaveFour.push('Соль');
-    if (listNotesOctaveFour.includes('Ля')) sortListNotesOctaveFour.push('Ля');
-    if (listNotesOctaveFour.includes('Си')) sortListNotesOctaveFour.push('Си');
+    if (listNotesOctaveFour.has('До')) sortListNotesOctaveFour.push('До');
+    if (listNotesOctaveFour.has('Ре')) sortListNotesOctaveFour.push('Ре');
+    if (listNotesOctaveFour.has('Ми')) sortListNotesOctaveFour.push('Ми');
+    if (listNotesOctaveFour.has('Фа')) sortListNotesOctaveFour.push('Фа');
+    if (listNotesOctaveFour.has('Соль')) sortListNotesOctaveFour.push('Соль');
+    if (listNotesOctaveFour.has('Ля')) sortListNotesOctaveFour.push('Ля');
+    if (listNotesOctaveFour.has('Си')) sortListNotesOctaveFour.push('Си');
 
-    if (listNotesOctaveBig.includes('До')) sortListNotesOctaveBig.push('До');
-    if (listNotesOctaveBig.includes('Ре')) sortListNotesOctaveBig.push('Ре');
-    if (listNotesOctaveBig.includes('Ми')) sortListNotesOctaveBig.push('Ми');
-    if (listNotesOctaveBig.includes('Фа')) sortListNotesOctaveBig.push('Фа');
-    if (listNotesOctaveBig.includes('Соль')) sortListNotesOctaveBig.push('Соль');
-    if (listNotesOctaveBig.includes('Ля')) sortListNotesOctaveBig.push('Ля');
-    if (listNotesOctaveBig.includes('Си')) sortListNotesOctaveBig.push('Си');
+    if (listNotesOctaveBig.has('До')) sortListNotesOctaveBig.push('До');
+    if (listNotesOctaveBig.has('Ре')) sortListNotesOctaveBig.push('Ре');
+    if (listNotesOctaveBig.has('Ми')) sortListNotesOctaveBig.push('Ми');
+    if (listNotesOctaveBig.has('Фа')) sortListNotesOctaveBig.push('Фа');
+    if (listNotesOctaveBig.has('Соль')) sortListNotesOctaveBig.push('Соль');
+    if (listNotesOctaveBig.has('Ля')) sortListNotesOctaveBig.push('Ля');
+    if (listNotesOctaveBig.has('Си')) sortListNotesOctaveBig.push('Си');
 
-    if (listNotesOctaveSmall.includes('До')) sortListNotesOctaveSmall.push('До');
-    if (listNotesOctaveSmall.includes('Ре')) sortListNotesOctaveSmall.push('Ре');
-    if (listNotesOctaveSmall.includes('Ми')) sortListNotesOctaveSmall.push('Ми');
-    if (listNotesOctaveSmall.includes('Фа')) sortListNotesOctaveSmall.push('Фа');
-    if (listNotesOctaveSmall.includes('Соль')) sortListNotesOctaveSmall.push('Соль');
-    if (listNotesOctaveSmall.includes('Ля')) sortListNotesOctaveSmall.push('Ля');
-    if (listNotesOctaveSmall.includes('Си')) sortListNotesOctaveSmall.push('Си');
+    if (listNotesOctaveSmall.has('До')) sortListNotesOctaveSmall.push('До');
+    if (listNotesOctaveSmall.has('Ре')) sortListNotesOctaveSmall.push('Ре');
+    if (listNotesOctaveSmall.has('Ми')) sortListNotesOctaveSmall.push('Ми');
+    if (listNotesOctaveSmall.has('Фа')) sortListNotesOctaveSmall.push('Фа');
+    if (listNotesOctaveSmall.has('Соль')) sortListNotesOctaveSmall.push('Соль');
+    if (listNotesOctaveSmall.has('Ля')) sortListNotesOctaveSmall.push('Ля');
+    if (listNotesOctaveSmall.has('Си')) sortListNotesOctaveSmall.push('Си');
   }
 
   function clearResults() {
-    logsCorrectKeys = [];
-    logsIncorrectKeys = [];
-    listNotesOctaveOne = [];
-    listNotesOctaveTwo = [];
-    listNotesOctaveThree = [];
-    listNotesOctaveFour = [];
-    listNotesOctaveBig = [];
-    listNotesOctaveSmall = [];
+    countCorrectNotes = 0;
+    countInCorrectNotes = 0;
+    listNotesOctaveOne.clear();
+    listNotesOctaveTwo.clear();
+    listNotesOctaveThree.clear();
+    listNotesOctaveFour.clear();
+    listNotesOctaveBig.clear();
+    listNotesOctaveSmall.clear();
+
+    sortListNotesOctaveOne = [];
+    sortListNotesOctaveTwo = [];
+    sortListNotesOctaveThree = [];
+    sortListNotesOctaveFour = [];
+    sortListNotesOctaveBig = [];
+    sortListNotesOctaveSmall = [];
   }
 
   function refreshResults() {
@@ -688,8 +674,8 @@ window.onload = function () {
     notesOctaveFour.textContent = sortListNotesOctaveFour.join(', ');
     notesOctaveBig.textContent = sortListNotesOctaveBig.join(', ');
     notesOctaveSmall.textContent = sortListNotesOctaveSmall.join(', ');
-    correctNotes.textContent = logsCorrectKeys.length;
-    incorrectNotes.textContent = logsIncorrectKeys.length;
+    correctNotes.textContent = countCorrectNotes;
+    incorrectNotes.textContent = countInCorrectNotes;
   }
 
   function showResults() {
